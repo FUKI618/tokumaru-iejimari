@@ -162,19 +162,19 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
 <!-- ===========================
      3. 信頼バー
      =========================== -->
-<section class="bg-bg-white border-t-4 border-teal py-6 px-4">
+<section class="bg-bg-white py-8 md:py-10 px-4">
   <div class="max-w-4xl mx-auto">
-    <div class="grid grid-cols-3 gap-3 stagger-children">
+    <div class="grid grid-cols-3 gap-3 md:gap-6 stagger-children">
       {[
         { num: "30,000", unit: "件+", label: "累計実績" },
         { num: "98", unit: "%", label: "お客様満足度" },
         { num: "0", unit: "円", label: "見積もり費用" },
       ].map(item => (
-        <div class="reveal text-center">
-          <div class="text-2xl md:text-4xl font-bold text-teal leading-none">
-            <span class="count-up">{item.num}</span><span class="text-lg md:text-2xl text-orange">{item.unit}</span>
-          </div>
-          <p class="text-[11px] md:text-sm text-text-light mt-1">{item.label}</p>
+        <div class="reveal bg-white rounded-2xl p-4 md:p-6 text-center shadow-md border border-border relative overflow-hidden">
+          <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-teal to-orange"></div>
+          <p class="number-shimmer font-black text-2xl md:text-4xl leading-none mt-1">{item.num}</p>
+          <p class="text-orange font-bold text-sm md:text-base">{item.unit}</p>
+          <p class="text-text-lighter text-[10px] md:text-xs mt-1">{item.label}</p>
         </div>
       ))}
     </div>
@@ -285,16 +285,19 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
         { img: svcPest,     alt: "ゴキブリ・ハエ害虫駆除サービス",          title: "害虫駆除",              desc: "ゴキブリ・コバエ等の害虫を専門薬剤で完全駆除。" },
         { img: svcHaul,     alt: "不用品搬出・トラック積込みサービス",       title: "不用品搬出",            desc: "大型家具・家電も丁寧に搬出。買取で費用節約も。" },
       ].map(svc => (
-        <div class="reveal bg-bg-white rounded-2xl overflow-hidden shadow-sm card-hover">
-          <div class="aspect-[4/3] overflow-hidden">
+        <div class="reveal rounded-2xl overflow-hidden shadow-lg card-hover group">
+          <div class="relative aspect-[4/3] overflow-hidden">
             <img src={svc.img} alt={svc.alt}
                  width="400" height="300"
-                 class="w-full h-full object-cover"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                  loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-teal-dark/80 via-teal-dark/20 to-transparent"></div>
+            <div class="absolute bottom-0 inset-x-0 p-3 md:p-4">
+              <h3 class="text-white font-black text-sm md:text-lg whitespace-pre-line leading-snug drop-shadow-lg">{svc.title}</h3>
+            </div>
           </div>
-          <div class="p-3 md:p-4">
-            <h3 class="text-sm md:text-base font-bold text-text mb-1 whitespace-pre-line leading-snug">{svc.title}</h3>
-            <p class="text-[11px] md:text-xs text-text-light leading-relaxed">{svc.desc}</p>
+          <div class="bg-white p-3 md:p-4">
+            <p class="text-text-light text-[11px] md:text-sm leading-relaxed">{svc.desc}</p>
           </div>
         </div>
       ))}
