@@ -34,7 +34,7 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
 
 <Layout
   title="名古屋のゴミ屋敷清掃・片付けなら徳丸商会｜24時間対応"
-  description="名古屋市・近郊のゴミ屋敷清掃・汚部屋片付けなら徳丸商会。24時間対応・追加料金なし・女性スタッフ在籍。害虫駆除・ハウスクリーニングまで一括対応。052-990-3968"
+  description="名古屋市・近郊のゴミ屋敷清掃・汚部屋片付けなら徳丸商会。24時間対応・追加料金なし・経験豊富なスタッフ。害虫駆除・ハウスクリーニングまで一括対応。052-990-3968"
 >
 
 <!-- ===========================
@@ -94,11 +94,11 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
         名古屋のゴミ屋敷清掃・<br />片付けなら<span class="text-orange-light">徳丸商会</span>
       </h1>
       <p class="text-sm text-white/80 mb-4 leading-relaxed">
-        散らかった部屋も最短即日対応。<br />女性スタッフ在籍・追加料金一切なし。
+        散らかった部屋も最短即日対応。<br />経験豊富なスタッフ・追加料金一切なし。
       </p>
       <!-- Badges -->
       <div class="flex flex-wrap gap-1.5 mb-5">
-        {["24時間対応", "追加料金なし", "女性スタッフ在籍", "秘密厳守"].map(b => (
+        {["24時間対応", "追加料金なし", "経験豊富なスタッフ", "秘密厳守"].map(b => (
           <span class="bg-white/20 text-white text-[11px] px-2 py-0.5 rounded-full border border-white/30 whitespace-nowrap">{b}</span>
         ))}
       </div>
@@ -132,10 +132,10 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
           名古屋のゴミ屋敷清掃・<br />片付けなら<span class="text-orange-light">徳丸商会</span>
         </h1>
         <p class="text-base text-white/85 mb-6 leading-relaxed">
-          散らかった部屋も最短即日対応。<br />女性スタッフ在籍・追加料金一切なし。
+          散らかった部屋も最短即日対応。<br />経験豊富なスタッフ・追加料金一切なし。
         </p>
         <div class="flex flex-wrap gap-2 mb-7">
-          {["24時間対応", "追加料金なし", "女性スタッフ在籍", "秘密厳守"].map(b => (
+          {["24時間対応", "追加料金なし", "経験豊富なスタッフ", "秘密厳守"].map(b => (
             <span class="bg-white/20 text-white text-sm px-3 py-1 rounded-full border border-white/30 whitespace-nowrap">{b}</span>
           ))}
         </div>
@@ -184,7 +184,7 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
      4. お悩みセクション
      =========================== -->
 <section class="relative py-12 md:py-20 px-4 overflow-hidden">
-  <img src={bgWorry} alt="ゴミ屋敷片付けに悩む女性"
+  <img src={bgWorry} alt="ゴミ屋敷片付けに悩む方"
        width="1200" height="675"
        class="absolute inset-0 w-full h-full object-cover object-top"
        loading="lazy" />
@@ -198,7 +198,7 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
         "部屋がゴミで埋まって手がつけられない",
         "近所に知られたくない",
         "害虫が発生している",
-        "女性一人で業者を呼ぶのが不安",
+        "一人で業者を呼ぶのが不安",
         "追加料金が怖い",
         "どこに頼めばいいかわからない",
       ].map(worry => (
@@ -301,12 +301,12 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-8 reveal">
       <p class="text-xs font-bold text-teal uppercase tracking-widest mb-1">SAFETY</p>
-      <h2 class="text-xl md:text-3xl font-bold text-text">女性のお客様も安心の<br class="md:hidden" />3つのポイント</h2>
+      <h2 class="text-xl md:text-3xl font-bold text-text">安心してお任せいただける<br class="md:hidden" />3つのポイント</h2>
     </div>
     <div class="flex flex-col md:flex-row gap-6 items-center">
       <div class="md:w-2/5 shrink-0 reveal">
         <div class="aspect-[4/3] overflow-hidden rounded-2xl shadow-md">
-          <img src={staffF} alt="徳丸商会の女性スタッフ。ゴミ屋敷清掃に安心して任せられます"
+          <img src={staffF} alt="徳丸商会のスタッフ。ゴミ屋敷清掃に安心して任せられます"
                width="400" height="300"
                class="w-full h-full object-cover object-top"
                loading="lazy" />
@@ -314,7 +314,7 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
       </div>
       <div class="md:w-3/5 grid gap-4 stagger-children">
         {[
-          { title: "女性スタッフを指名OK", desc: "女性のお客様でも安心。女性スタッフが対応いたします。事前にお申し付けください。", iconPath: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2 M12 7a4 4 0 1 0-8 0 4 4 0 0 0 8 0 M22 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75" },
+          { title: "経験豊富なスタッフが担当", desc: "お客様一人ひとりに寄り添い、経験豊富なスタッフが丁寧に対応いたします。安心してお任せください。", iconPath: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2 M12 7a4 4 0 1 0-8 0 4 4 0 0 0 8 0 M22 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75" },
           { title: "私服作業で近隣配慮", desc: "ロゴなしの作業着・私服で伺います。近所に知られることなく作業可能です。", iconPath: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" },
           { title: "個人情報は10日で破棄", desc: "ご依頼時にお預かりした個人情報は作業完了後10日以内に完全消去します。", iconPath: "M9 12l2 2 4-4 M22 12A10 10 0 1 1 12 2a10 10 0 0 1 10 10z" },
         ].map(pt => (
@@ -710,7 +710,7 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
           area: "名古屋市中区",
           gender: "30代女性",
           rating: 5,
-          text: "一人暮らしでゴミが溜まり、どうしようか困っていました。女性スタッフさんが来てくれて安心でした。丁寧に対応してくれてとても助かりました。",
+          text: "一人暮らしでゴミが溜まり、どうしようか困っていました。スタッフさんの対応がとても丁寧で安心でした。丁寧に対応してくれてとても助かりました。",
         },
         {
           area: "名古屋市守山区",
@@ -794,8 +794,8 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
           a: "可能です。ロゴのない私服・作業着での対応、早朝や夜間作業のご相談にも応じます。プライバシーへの配慮を徹底しております。",
         },
         {
-          q: "女性スタッフを指名できますか？",
-          a: "はい、承っております。ご予約時にお申し付けいただければ、女性スタッフが対応いたします。お一人暮らしの女性のお客様も安心してご依頼ください。",
+          q: "スタッフの対応は丁寧ですか？",
+          a: "はい、経験豊富なスタッフが丁寧に対応いたします。お一人暮らしの方やご高齢の方も安心してご依頼ください。作業前に必ずご説明し、ご納得いただいてから作業を開始します。",
         },
         {
           q: "見積もり後に追加料金は発生しますか？",
@@ -959,7 +959,7 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
       <span class="mx-4">・</span>
       <span class="mx-4">追加料金一切なし</span>
       <span class="mx-4">・</span>
-      <span class="mx-4">女性スタッフ在籍</span>
+      <span class="mx-4">経験豊富なスタッフ</span>
       <span class="mx-4">・</span>
       <span class="mx-4">秘密厳守</span>
       <span class="mx-4">・</span>
@@ -967,7 +967,7 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
       <span class="mx-4">・</span>
       <span class="mx-4">追加料金一切なし</span>
       <span class="mx-4">・</span>
-      <span class="mx-4">女性スタッフ在籍</span>
+      <span class="mx-4">経験豊富なスタッフ</span>
       <span class="mx-4">・</span>
       <span class="mx-4">秘密厳守</span>
       <span class="mx-4">・</span>
