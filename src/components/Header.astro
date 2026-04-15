@@ -1,0 +1,45 @@
+---
+const phone = "052-990-3968";
+const phoneHref = "tel:0529903968";
+---
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm transition-shadow duration-300">
+  <div class="mx-auto max-w-[1200px] px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="text-xl font-bold text-navy">家じまい相談窓口</span>
+      <span class="hidden sm:inline text-sm text-warm-gray">徳丸商会</span>
+    </div>
+
+    <div class="flex items-center gap-3 sm:gap-4">
+      <!-- Phone (desktop) -->
+      <a
+        href={phoneHref}
+        class="hidden sm:flex items-center gap-2 text-navy font-bold text-lg hover:text-gold transition-colors"
+      >
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+        </svg>
+        {phone}
+      </a>
+
+      <!-- Phone icon (mobile) -->
+      <a
+        href={phoneHref}
+        class="sm:hidden flex items-center justify-center w-12 h-12 rounded-full bg-gold text-white"
+        aria-label="電話する"
+      >
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+        </svg>
+      </a>
+
+      <!-- CTA button -->
+      <a
+        href="#contact"
+        class="inline-flex items-center px-5 py-2.5 bg-gold hover:bg-gold-light text-white font-bold rounded-lg transition-colors text-sm sm:text-base min-h-[48px]"
+      >
+        無料相談
+      </a>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,66 @@
+---
+const phone = "052-990-3968";
+const phoneHref = "tel:0529903968";
+---
+
+<section class="relative bg-navy text-white overflow-hidden">
+  <!-- Background pattern -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;0.15&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-[1200px] px-4 py-16 sm:py-24 text-center">
+    <p class="text-gold text-sm sm:text-base font-bold mb-4 tracking-wider">名古屋の家じまい相談窓口｜徳丸商会</p>
+
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6">
+      実家じまい、<br class="sm:hidden" />何から始めればいい？
+    </h1>
+
+    <p class="text-lg sm:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
+      片付け・遺品整理・不用品処分まで、<br class="hidden sm:block" />
+      まるごとサポートいたします。<br />
+      まずはお気軽にご相談ください。
+    </p>
+
+    <!-- CTA buttons -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+      <a
+        href="#contact"
+        class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-gold hover:bg-gold-light text-white font-bold text-lg rounded-lg transition-colors min-h-[56px] shadow-lg"
+      >
+        無料で相談する
+      </a>
+      <a
+        href={phoneHref}
+        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/30 hover:border-white/60 text-white font-bold text-lg rounded-lg transition-colors min-h-[56px]"
+      >
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+        </svg>
+        {phone}
+      </a>
+    </div>
+
+    <!-- Trust badges -->
+    <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-sm text-white/70">
+      <div class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        <span>相談実績多数</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+        </svg>
+        <span>見積もり無料</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </svg>
+        <span>名古屋市・近郊対応</span>
+      </div>
+    </div>
+  </div>
+</section>

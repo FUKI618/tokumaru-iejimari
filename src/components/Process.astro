@@ -1,0 +1,93 @@
+---
+const steps = [
+  {
+    num: "01",
+    title: "家族で話し合い",
+    desc: "まずはご家族で方針を確認。誰が主導するか、スケジュール感を話し合います。",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>`,
+  },
+  {
+    num: "02",
+    title: "片付け・整理",
+    desc: "必要なもの、売れるもの、不用品に仕分け。粗大ごみや産業廃棄物も適切に処分します。",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/></svg>`,
+  },
+  {
+    num: "03",
+    title: "不動産の査定",
+    desc: "不動産の専門家が適正価格を査定。売却可能か、解体が必要かをご提案します。",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>`,
+  },
+  {
+    num: "04",
+    title: "処分方法の決定",
+    desc: "売却・古家付き売却・更地にして売却・賃貸運用など、最適な方法をご一緒に選びます。",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>`,
+  },
+  {
+    num: "05",
+    title: "各種手続き",
+    desc: "相続登記（2024年義務化）、不動産の名義変更、確定申告など必要な手続きをサポート。",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`,
+  },
+];
+
+const phone = "052-990-3968";
+const phoneHref = "tel:0529903968";
+---
+
+<section class="py-16 sm:py-20 bg-cream">
+  <div class="mx-auto max-w-[1200px] px-4">
+    <h2 class="text-2xl sm:text-3xl font-bold text-center text-navy mb-4">
+      家じまいの流れ
+    </h2>
+    <p class="text-center text-warm-gray mb-12 max-w-2xl mx-auto">
+      5つのステップで、実家の片付けから手続きまで完了します。
+    </p>
+
+    <div class="space-y-6 max-w-3xl mx-auto">
+      {steps.map((step, i) => (
+        <div class="flex gap-6 items-start">
+          <!-- Step number + line -->
+          <div class="flex flex-col items-center shrink-0">
+            <div class="w-14 h-14 bg-navy text-gold rounded-full flex items-center justify-center font-bold text-lg">
+              {step.num}
+            </div>
+            {i < steps.length - 1 && (
+              <div class="w-0.5 h-12 bg-navy/20 mt-2" />
+            )}
+          </div>
+
+          <!-- Content -->
+          <div class="bg-white rounded-xl p-6 shadow-sm flex-1 border border-gray-100">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="text-gold" set:html={step.icon} />
+              <h3 class="text-lg font-bold text-navy">{step.title}</h3>
+            </div>
+            <p class="text-warm-gray leading-relaxed">{step.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA after process -->
+    <div class="text-center mt-12">
+      <p class="text-navy font-bold text-lg mb-4">すべてのステップを私たちがサポートします</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="#contact"
+          class="inline-flex items-center px-8 py-4 bg-gold hover:bg-gold-light text-white font-bold rounded-lg transition-colors min-h-[48px]"
+        >
+          無料で相談する
+        </a>
+        <a
+          href={phoneHref}
+          class="inline-flex items-center gap-2 text-navy font-bold text-lg hover:text-gold transition-colors"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          {phone}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

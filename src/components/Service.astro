@@ -1,0 +1,75 @@
+---
+const features = [
+  {
+    icon: `<svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 003.75.614m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 1.189a3 3 0 01-.621 4.72m-13.5 8.65h3.75a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H6.75a.75.75 0 00-.75.75v3.15c0 .415.336.75.75.75z"/></svg>`,
+    title: "ワンストップ対応",
+    desc: "片付け・遺品整理から不動産の売却相談、解体、各種手続きまで、すべてお任せいただけます。何社にも連絡する手間がありません。",
+  },
+  {
+    icon: `<svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>`,
+    title: "地域密着のネットワーク",
+    desc: "地元の不動産会社や解体業者との強いネットワーク。地域の事情に精通したスタッフが最適な提案をいたします。",
+  },
+  {
+    icon: `<svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/></svg>`,
+    title: "明朗会計・追加料金なし",
+    desc: "事前にお見積もりを提示し、追加料金は一切いただきません。安心してお任せいただけます。",
+  },
+];
+---
+
+<section class="py-16 sm:py-20 bg-cream">
+  <div class="mx-auto max-w-[1200px] px-4">
+    <h2 class="text-2xl sm:text-3xl font-bold text-center text-navy mb-4">
+      私たちが選ばれる理由
+    </h2>
+    <p class="text-center text-warm-gray mb-12 max-w-2xl mx-auto">
+      家じまいの不安を解消する、3つの強みがあります。
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {features.map((feature) => (
+        <div class="bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+          <div class="inline-flex items-center justify-center w-16 h-16 bg-gold/10 text-gold rounded-full mb-6" set:html={feature.icon} />
+          <h3 class="text-lg font-bold text-navy mb-3">{feature.title}</h3>
+          <p class="text-warm-gray leading-relaxed text-sm">{feature.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- 対応エリア -->
+    <div class="mt-16">
+      <h3 class="text-xl sm:text-2xl font-bold text-center text-navy mb-8">対応エリア</h3>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <!-- 名古屋市 -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+          <h4 class="font-bold text-navy text-lg mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            名古屋市全域（16区）
+          </h4>
+          <div class="flex flex-wrap gap-2">
+            {["千種区","東区","北区","西区","中村区","中区","昭和区","瑞穂区","熱田区","中川区","港区","南区","守山区","緑区","名東区","天白区"].map((area) => (
+              <span class="px-3 py-1 bg-cream text-navy text-sm rounded-full">{area}</span>
+            ))}
+          </div>
+        </div>
+
+        <!-- 近郊エリア -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+          <h4 class="font-bold text-navy text-lg mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            近郊エリア
+          </h4>
+          <div class="flex flex-wrap gap-2">
+            {["あま市","大治町","蟹江町","飛島村","清須市","北名古屋市","津島市","愛西市","弥富市","東海市","大府市","刈谷市","豊明市","四日市市（三重県）"].map((area) => (
+              <span class="px-3 py-1 bg-cream text-navy text-sm rounded-full">{area}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <p class="text-center text-warm-gray text-sm mt-6">上記以外のエリアもご相談ください。お気軽にお問い合わせください。</p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,50 @@
+---
+const problems = [
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>`,
+    text: "実家が空き家になっている",
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>`,
+    text: "親が施設に入り\n家の管理ができない",
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>`,
+    text: "相続の手続きが\nよく分からない",
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>`,
+    text: "片付けの量が多すぎて\n途方にくれている",
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+    text: "固定資産税を\n払い続けている",
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>`,
+    text: "近隣からの苦情が\n心配",
+  },
+];
+---
+
+<section class="py-16 sm:py-20 bg-white">
+  <div class="mx-auto max-w-[1200px] px-4">
+    <h2 class="text-2xl sm:text-3xl font-bold text-center text-navy mb-4">
+      こんなお悩みありませんか？
+    </h2>
+    <p class="text-center text-warm-gray mb-12 max-w-2xl mx-auto">
+      実家の片付けや処分に関するお悩みは、多くの方が抱えています。
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {problems.map((problem) => (
+        <div class="flex items-start gap-4 p-6 rounded-xl bg-cream border border-cream-dark hover:shadow-md transition-shadow">
+          <div class="shrink-0 text-gold" set:html={problem.icon} />
+          <p class="text-base font-medium text-navy whitespace-pre-line leading-relaxed">
+            {problem.text}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
