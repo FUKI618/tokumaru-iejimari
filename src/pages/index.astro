@@ -109,10 +109,10 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
 
     <!-- 下段: バッジ＋料金＋CTA -->
     <div class="bg-teal-dark px-4 py-5">
-      <!-- バッジ: 横並び2行 -->
-      <div class="flex flex-wrap gap-1.5 mb-4">
-        {["24時間対応", "追加料金なし", "経験豊富なスタッフ", "秘密厳守"].map(b => (
-          <span class="bg-white/15 text-white text-[11px] font-bold px-3 py-1.5 rounded-full border border-white/30 whitespace-nowrap">{b}</span>
+      <!-- バッジ: 2x2グリッド -->
+      <div class="grid grid-cols-4 gap-1.5 mb-4">
+        {["24時間対応", "追加料金なし", "経験豊富", "秘密厳守"].map(b => (
+          <span class="bg-white/15 text-white text-[11px] font-bold px-2 py-1.5 rounded-full border border-white/30 whitespace-nowrap text-center">{b}</span>
         ))}
       </div>
       <!-- 料金 -->
