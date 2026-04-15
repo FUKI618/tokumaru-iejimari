@@ -18,6 +18,18 @@ const bgWorry   = asset("images/gomi/bg-worry.webp");
 const staffF    = asset("images/gomi/staff-female.webp");
 const bgArea    = asset("images/gomi/bg-area.webp");
 const bgConsult = asset("images/gomi/bg-consultation.webp");
+const before2   = asset("images/gomi/before2.webp");
+const after2    = asset("images/gomi/after2.webp");
+const before3   = asset("images/gomi/before3.webp");
+const after3    = asset("images/gomi/after3.webp");
+const before4   = asset("images/gomi/before4.webp");
+const after4    = asset("images/gomi/after4.webp");
+const buyoutCabinet = asset("images/gomi/buyout-cabinet.webp");
+const buyoutWasher  = asset("images/gomi/buyout-washer.webp");
+const buyoutTires   = asset("images/gomi/buyout-tires.webp");
+const buyoutTable   = asset("images/gomi/buyout-table.webp");
+const svcPrivacy    = asset("images/gomi/service-privacy.webp");
+const bgHappy       = asset("images/gomi/bg-happy.webp");
 ---
 
 <Layout
@@ -204,6 +216,51 @@ const bgConsult = asset("images/gomi/bg-consultation.webp");
 
 
 <!-- ===========================
+     4.5 業者選びトラブル警告
+     =========================== -->
+<section class="py-12 md:py-16 px-4 bg-white">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-8 reveal">
+      <p class="text-xs font-bold text-red-600 uppercase tracking-widest mb-1">WARNING</p>
+      <h2 class="text-lg md:text-2xl font-bold text-text">正しい片付け業者を選ばないとこんなトラブルも…</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 stagger-children">
+      {[
+        {
+          label: "大事なものも捨てられた…",
+          iconPath: "M3 6h18 M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6 M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2",
+        },
+        {
+          label: "見積りと違う高額請求",
+          iconPath: "M12 1v22 M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",
+        },
+        {
+          label: "追加料金で倍額に",
+          iconPath: "M12 19V5 M5 12l7-7 7 7",
+        },
+        {
+          label: "ご近所からクレーム",
+          iconPath: "M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z M9 22V12h6v10",
+        },
+      ].map(item => (
+        <div class="reveal flex flex-col items-center gap-3 bg-red-50 border border-red-200 rounded-2xl p-4 text-center">
+          <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d={item.iconPath}/>
+            </svg>
+          </div>
+          <p class="text-xs md:text-sm font-bold text-red-700 leading-snug">{item.label}</p>
+        </div>
+      ))}
+    </div>
+    <p class="text-center text-sm md:text-base font-bold text-teal mt-8 reveal">
+      徳丸商会なら、これらのトラブルは一切ありません。
+    </p>
+  </div>
+</section>
+
+
+<!-- ===========================
      5. 対応サービス
      =========================== -->
 <section id="services" class="py-12 md:py-20 px-4 bg-bg">
@@ -313,6 +370,34 @@ const bgConsult = asset("images/gomi/bg-consultation.webp");
       ※ゴミの量・種類・エリアによって変動します。詳細は無料お見積もりにてご確認ください。
     </p>
 
+    <!-- 無料項目グリッド -->
+    <div class="mt-8 reveal">
+      <div class="bg-teal-bg border border-teal/30 rounded-2xl p-5 md:p-6">
+        <p class="text-center text-sm md:text-base font-bold text-teal-dark mb-1">他社では有料になることもあるこれらの内容が</p>
+        <p class="text-center text-2xl md:text-3xl font-black text-orange mb-4">すべて0円</p>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+          {[
+            { label: "車両代", iconPath: "M1 3h15v13H1z M16 8h4l3 3v5h-7V8z M5.5 21a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z M18.5 21a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" },
+            { label: "出張代", iconPath: "M12 2L2 7l10 5 10-5-10-5z M2 17l10 5 10-5 M2 12l10 5 10-5" },
+            { label: "深夜料金", iconPath: "M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" },
+            { label: "特急料金", iconPath: "M13 2L3 14h9l-1 8 10-12h-9l1-8z" },
+            { label: "出張見積", iconPath: "M9 11l3 3L22 4 M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" },
+            { label: "養生代", iconPath: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" },
+          ].map(item => (
+            <div class="flex items-center gap-2 bg-white rounded-xl p-3 shadow-sm">
+              <div class="shrink-0 w-8 h-8 bg-teal/10 rounded-lg flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d={item.iconPath}/>
+                </svg>
+              </div>
+              <span class="text-sm font-bold text-text whitespace-nowrap">{item.label}</span>
+              <span class="ml-auto text-[11px] font-black text-orange whitespace-nowrap">無料</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
     <!-- オプション料金 -->
     <h3 class="text-base md:text-xl font-bold text-text text-center mt-10 mb-4 reveal">オプション料金</h3>
     <div class="reveal overflow-hidden rounded-xl border border-border shadow-sm">
@@ -343,6 +428,27 @@ const bgConsult = asset("images/gomi/bg-consultation.webp");
       </table>
     </div>
 
+    <!-- 害虫駆除費用の目安 -->
+    <h3 class="text-base md:text-xl font-bold text-text text-center mt-10 mb-4 reveal">害虫駆除費用の目安</h3>
+    <div class="reveal space-y-2">
+      {[
+        { type: "ゴキブリ", price: "2〜4万円", note: "1〜3LDKの場合" },
+        { type: "シロアリ", price: "坪あたり5,000〜10,000円", note: "床下処理を含む" },
+        { type: "ハチ",   price: "8,000〜50,000円", note: "種類・巣の大きさによる" },
+        { type: "ムカデ等", price: "3〜15万円", note: "20坪戸建ての場合" },
+        { type: "ダニ・ノミ", price: "2〜4万円", note: "1〜3LDKの場合" },
+      ].map(r => (
+        <div class="reveal bg-white rounded-xl border border-border p-4 flex flex-col md:flex-row md:items-center gap-1 md:gap-6">
+          <p class="text-text font-black text-sm md:text-base md:w-32 whitespace-nowrap">{r.type}</p>
+          <p class="text-orange font-black text-base md:text-lg whitespace-nowrap">{r.price}</p>
+          <p class="text-text-light text-xs md:text-sm">{r.note}</p>
+        </div>
+      ))}
+    </div>
+    <p class="text-[11px] text-text-lighter text-center mt-3">
+      ※害虫の種類・発生状況・建物規模によって変動します。現地確認後に正確なお見積もりをご提示します。
+    </p>
+
     <!-- 解体費用の目安 -->
     <h3 class="text-base md:text-xl font-bold text-text text-center mt-10 mb-4 reveal">解体費用の目安</h3>
     <div class="reveal space-y-3">
@@ -361,6 +467,46 @@ const bgConsult = asset("images/gomi/bg-consultation.webp");
     </div>
     <p class="text-[11px] text-text-lighter text-center mt-3">
       ※解体費用は現地調査後に正確なお見積もりをご提示します。まずはお気軽にご相談ください。
+    </p>
+  </div>
+</section>
+
+
+<!-- ===========================
+     7.5 買取値引きセクション
+     =========================== -->
+<section class="py-12 md:py-20 px-4 bg-teal-bg">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-4 reveal">
+      <p class="text-xs font-bold text-teal uppercase tracking-widest mb-1">BUYOUT</p>
+      <h2 class="text-xl md:text-3xl font-bold text-text">不用品の買取で片付け料金がさらにお得に</h2>
+    </div>
+    <p class="text-center text-sm md:text-base text-text-light mb-8 reveal">
+      古物商許可（第541042309800号）を取得。家具・家電・タイヤなど幅広く買取し、<br class="hidden md:inline" />その金額を清掃費用から差し引きます。
+    </p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 stagger-children">
+      {[
+        { img: buyoutCabinet, alt: "食器棚の買取", label: "食器棚", price: "2,000円〜" },
+        { img: buyoutWasher,  alt: "洗濯機の買取", label: "洗濯機", price: "3,000円〜" },
+        { img: buyoutTires,   alt: "タイヤの買取",  label: "タイヤ", price: "6,000円〜" },
+        { img: buyoutTable,   alt: "テーブルの買取", label: "テーブル", price: "4,000円〜" },
+      ].map(item => (
+        <div class="reveal bg-white rounded-2xl overflow-hidden shadow-md card-hover">
+          <div class="aspect-square overflow-hidden">
+            <img src={item.img} alt={item.alt}
+                 width="300" height="300"
+                 class="w-full h-full object-cover"
+                 loading="lazy" />
+          </div>
+          <div class="p-3 text-center">
+            <p class="text-sm font-bold text-text mb-1">{item.label}</p>
+            <p class="text-base font-black text-orange">{item.price}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+    <p class="text-[11px] text-text-lighter text-center mt-4">
+      ※買取価格は状態・年式・市場相場によって変動します。詳細は現地確認時にご案内します。
     </p>
   </div>
 </section>
@@ -395,38 +541,89 @@ const bgConsult = asset("images/gomi/bg-consultation.webp");
 
 
 <!-- ===========================
-     9. ビフォーアフター
+     9. ビフォーアフター（施工実績カード）
      =========================== -->
 <section class="py-12 md:py-20 px-4 bg-bg">
-  <div class="max-w-4xl mx-auto">
+  <div class="max-w-5xl mx-auto">
     <div class="text-center mb-8 reveal">
       <p class="text-xs font-bold text-teal uppercase tracking-widest mb-1">BEFORE / AFTER</p>
-      <h2 class="text-xl md:text-3xl font-bold text-text">施工事例</h2>
+      <h2 class="text-xl md:text-3xl font-bold text-text">施工実績</h2>
     </div>
-    <div class="flex flex-col md:flex-row gap-4 stagger-children">
-      <div class="reveal flex-1">
-        <div class="relative aspect-video overflow-hidden rounded-2xl shadow-md">
-          <img src={before1} alt="ゴミ屋敷清掃前の室内。大量のゴミが堆積した状態"
-               width="800" height="450"
-               class="w-full h-full object-cover"
-               loading="lazy" />
-          <span class="absolute top-3 left-3 bg-text text-white text-xs font-bold px-3 py-1 rounded-full">BEFORE</span>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 stagger-children">
+      {[
+        {
+          title: "ゴミ屋敷片付け",
+          before: before1,
+          after:  after1,
+          beforeAlt: "清掃前の室内。ゴミが堆積した状態",
+          afterAlt:  "清掃後の室内。きれいに片付いた状態",
+          price: "39,800円（税込）",
+          details: [
+            { label: "間取り", value: "1K" },
+            { label: "建物",   value: "マンション1F" },
+            { label: "作業時間", value: "3時間" },
+          ],
+        },
+        {
+          title: "ゴミ屋敷片付け",
+          before: before2,
+          after:  after2,
+          beforeAlt: "清掃前の廊下。ゴミが堆積した状態",
+          afterAlt:  "清掃後の廊下。きれいに片付いた状態",
+          price: "59,800円（税込）",
+          details: [
+            { label: "間取り", value: "1K" },
+            { label: "建物",   value: "アパート3F" },
+            { label: "作業時間", value: "4時間" },
+          ],
+        },
+        {
+          title: "ハウスクリーニング",
+          before: before3,
+          after:  after3,
+          beforeAlt: "清掃前の洗面台。汚れが蓄積した状態",
+          afterAlt:  "清掃後の洗面台。ピカピカの状態",
+          price: "7,800円（税込）",
+          details: [
+            { label: "間取り", value: "1DK" },
+            { label: "建物",   value: "マンション2F" },
+            { label: "作業時間", value: "2時間" },
+          ],
+        },
+      ].map(card => (
+        <div class="reveal bg-white rounded-2xl shadow-md overflow-hidden">
+          <div class="p-3 border-b border-border">
+            <p class="text-sm font-bold text-text">{card.title}</p>
+          </div>
+          <div class="grid grid-cols-2">
+            <div class="relative aspect-square overflow-hidden">
+              <img src={card.before} alt={card.beforeAlt}
+                   width="300" height="300"
+                   class="w-full h-full object-cover"
+                   loading="lazy" />
+              <span class="absolute top-0 left-0 right-0 bg-text/80 text-white text-[10px] font-black text-center py-1 tracking-wider">BEFORE</span>
+            </div>
+            <div class="relative aspect-square overflow-hidden">
+              <img src={card.after} alt={card.afterAlt}
+                   width="300" height="300"
+                   class="w-full h-full object-cover"
+                   loading="lazy" />
+              <span class="absolute top-0 left-0 right-0 bg-red-600/85 text-white text-[10px] font-black text-center py-1 tracking-wider">AFTER</span>
+            </div>
+          </div>
+          <div class="p-4">
+            <p class="text-xl font-black text-orange mb-3">{card.price}</p>
+            <dl class="divide-y divide-border text-sm">
+              {card.details.map(d => (
+                <div class="flex items-center justify-between py-1.5">
+                  <dt class="text-text-light text-xs whitespace-nowrap">{d.label}</dt>
+                  <dd class="font-bold text-text text-xs whitespace-nowrap">{d.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </div>
-        <p class="text-center text-xs text-text-light mt-2">作業前</p>
-      </div>
-      <div class="reveal flex items-center justify-center text-3xl text-teal font-bold md:text-5xl" aria-hidden="true">
-        <span class="md:rotate-0 rotate-90">→</span>
-      </div>
-      <div class="reveal flex-1">
-        <div class="relative aspect-video overflow-hidden rounded-2xl shadow-md">
-          <img src={after1} alt="ゴミ屋敷清掃後の室内。きれいに片付いた状態"
-               width="800" height="450"
-               class="w-full h-full object-cover"
-               loading="lazy" />
-          <span class="absolute top-3 left-3 bg-teal text-white text-xs font-bold px-3 py-1 rounded-full">AFTER</span>
-        </div>
-        <p class="text-center text-xs text-text-light mt-2">作業後</p>
-      </div>
+      ))}
     </div>
   </div>
 </section>
@@ -655,7 +852,7 @@ const bgConsult = asset("images/gomi/bg-consultation.webp");
      15. 最終CTA
      =========================== -->
 <section class="relative py-14 md:py-24 px-4 overflow-hidden">
-  <img src={bgConsult} alt="ゴミ屋敷清掃の最終相談・見積もり依頼シーン"
+  <img src={bgHappy} alt="ゴミ屋敷清掃後に笑顔になった家族"
        width="1200" height="675"
        class="absolute inset-0 w-full h-full object-cover object-center"
        loading="lazy" />
