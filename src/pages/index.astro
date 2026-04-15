@@ -63,7 +63,7 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
       <a href="tel:052-990-3968"
          class="flex items-center gap-1 bg-teal text-white rounded-md px-2.5 py-1.5 text-[11px] font-bold leading-none hover:bg-teal-dark transition-colors">
         <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-        <span class="whitespace-nowrap">無料電話</span>
+        <span class="whitespace-nowrap">電話で相談</span>
       </a>
       <a href="https://lin.ee/j4wK9IM" target="_blank" rel="noopener noreferrer"
          class="flex items-center gap-1 bg-line text-white rounded-md px-2.5 py-1.5 text-[11px] font-bold leading-none hover:opacity-90 transition-opacity">
@@ -109,7 +109,7 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
         <a href="tel:052-990-3968"
            class="flex-1 flex items-center justify-center gap-1.5 bg-orange text-white font-bold rounded-lg py-3 text-sm cta-glow">
           <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-          <span class="whitespace-nowrap">無料電話相談</span>
+          <span class="whitespace-nowrap">電話で相談</span>
         </a>
         <a href="https://lin.ee/j4wK9IM" target="_blank" rel="noopener noreferrer"
            class="flex-1 flex items-center justify-center gap-1.5 bg-line text-white font-bold rounded-lg py-3 text-sm cta-glow-line">
@@ -145,7 +145,7 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
           <a href="tel:052-990-3968"
              class="flex items-center gap-2 bg-orange hover:bg-orange-dark text-white font-bold rounded-xl px-6 py-4 text-base transition-colors cta-glow">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-            今すぐ無料電話
+            今すぐ電話で相談
           </a>
           <a href="https://lin.ee/j4wK9IM" target="_blank" rel="noopener noreferrer"
              class="flex items-center gap-2 bg-line hover:opacity-90 text-white font-bold rounded-xl px-6 py-4 text-base transition-opacity cta-glow-line">
@@ -166,7 +166,7 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
   <div class="max-w-4xl mx-auto">
     <div class="grid grid-cols-3 gap-3 stagger-children">
       {[
-        { num: "3,000", unit: "件+", label: "累計実績" },
+        { num: "30,000", unit: "件+", label: "累計実績" },
         { num: "98", unit: "%", label: "お客様満足度" },
         { num: "0", unit: "円", label: "見積もり費用" },
       ].map(item => (
@@ -190,7 +190,7 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
        width="1200" height="675"
        class="absolute inset-0 w-full h-full object-cover object-top"
        loading="lazy" />
-  <div class="absolute inset-0 bg-teal-dark/80"></div>
+  <div class="absolute inset-0 bg-teal-dark/70"></div>
   <div class="relative z-10 max-w-4xl mx-auto">
     <h2 class="text-lg md:text-3xl font-bold text-white text-center mb-8 reveal">
       こんなお悩みありませんか？
@@ -226,38 +226,45 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
       <p class="text-xs font-bold text-red-600 uppercase tracking-widest mb-1">WARNING</p>
       <h2 class="text-lg md:text-2xl font-bold text-text">正しい片付け業者を選ばないとこんなトラブルも…</h2>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 stagger-children">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 stagger-children">
       {[
         {
           label: "大事なものも捨てられた…",
+          desc: "大切な物も全部処分されて何も残らなかった…伝えた内容と全然違う…",
           iconPath: "M3 6h18 M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6 M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2",
         },
         {
           label: "見積りと違う高額請求",
+          desc: "見積もりと実際の費用が全く違い、見積額の数倍を請求された…",
           iconPath: "M12 1v22 M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",
         },
         {
           label: "追加料金で倍額に",
+          desc: "基本料金は安いけど、ほとんどの作業がオプションで多大な追加料金が…",
           iconPath: "M12 19V5 M5 12l7-7 7 7",
         },
         {
           label: "ご近所からクレーム",
+          desc: "ゴミ屋敷の片付けや汚部屋の掃除の際に配慮が無くご近所と問題が…",
           iconPath: "M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z M9 22V12h6v10",
         },
       ].map(item => (
-        <div class="reveal flex flex-col items-center gap-3 bg-red-50 border border-red-200 rounded-2xl p-4 text-center">
-          <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <div class="reveal flex flex-col items-center gap-3 bg-gradient-to-b from-red-50 to-white border border-red-200 rounded-2xl p-5 text-center shadow-sm card-hover">
+          <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center shrink-0 shadow">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d={item.iconPath}/>
             </svg>
           </div>
-          <p class="text-xs md:text-sm font-bold text-red-700 leading-snug">{item.label}</p>
+          <h3 class="text-sm md:text-base font-black text-red-700 leading-snug">{item.label}</h3>
+          <p class="text-[11px] md:text-xs text-text-light leading-relaxed">{item.desc}</p>
         </div>
       ))}
     </div>
-    <p class="text-center text-sm md:text-base font-bold text-teal mt-8 reveal">
-      徳丸商会なら、これらのトラブルは一切ありません。
-    </p>
+    <div class="text-center mt-8 reveal">
+      <p class="inline-block bg-teal text-white font-bold text-sm md:text-base px-8 py-3 rounded-full shadow-lg">
+        徳丸商会なら、これらのトラブルは一切ありません
+      </p>
+    </div>
   </div>
 </section>
 
@@ -435,7 +442,7 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
     <div class="reveal space-y-2">
       {[
         { type: "ゴキブリ", price: "2〜4万円", note: "1〜3LDKの場合" },
-        { type: "シロアリ", price: "坪あたり5,000〜10,000円", note: "床下処理を含む" },
+        { type: "シロアリ", price: "15万〜30万円", note: "30坪戸建ての場合。坪単価5,000〜10,000円" },
         { type: "ハチ",   price: "8,000〜50,000円", note: "種類・巣の大きさによる" },
         { type: "ムカデ等", price: "3〜15万円", note: "20坪戸建ての場合" },
         { type: "ダニ・ノミ", price: "2〜4万円", note: "1〜3LDKの場合" },
@@ -522,7 +529,7 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
        width="1200" height="675"
        class="absolute inset-0 w-full h-full object-cover object-center"
        loading="lazy" />
-  <div class="absolute inset-0 bg-teal-dark/80"></div>
+  <div class="absolute inset-0 bg-teal-dark/70"></div>
   <div class="relative z-10 text-center text-white">
     <h2 class="text-xl md:text-3xl font-bold mb-2 reveal">まずは無料見積もり</h2>
     <p class="text-sm md:text-base text-white/80 mb-6 reveal">現地確認・お見積もり完全無料。お気軽にご相談ください。</p>
@@ -750,7 +757,7 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
        width="1200" height="675"
        class="absolute inset-0 w-full h-full object-cover object-center"
        loading="lazy" />
-  <div class="absolute inset-0 bg-teal-dark/85"></div>
+  <div class="absolute inset-0 bg-teal-dark/70"></div>
   <div class="relative z-10 max-w-5xl mx-auto">
     <div class="text-center mb-8 reveal">
       <p class="text-xs font-bold text-teal-light uppercase tracking-widest mb-1">AREA</p>
@@ -858,7 +865,7 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
        width="1200" height="675"
        class="absolute inset-0 w-full h-full object-cover object-center"
        loading="lazy" />
-  <div class="absolute inset-0 bg-teal-dark/85"></div>
+  <div class="absolute inset-0 bg-teal-dark/70"></div>
   <div class="relative z-10 text-center max-w-2xl mx-auto">
     <h2 class="text-xl md:text-3xl font-bold text-white mb-3 reveal">
       今すぐゴミ屋敷を解決しませんか？
@@ -871,7 +878,7 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
       <a href="tel:052-990-3968"
          class="flex items-center justify-center gap-2 bg-orange text-white font-bold rounded-xl py-4 text-base cta-glow">
         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-        無料電話相談 052-990-3968
+        電話で相談 052-990-3968
       </a>
       <a href="https://lin.ee/j4wK9IM" target="_blank" rel="noopener noreferrer"
          class="flex items-center justify-center gap-2 bg-line text-white font-bold rounded-xl py-4 text-base cta-glow-line">
@@ -885,7 +892,7 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
       <a href="tel:052-990-3968"
          class="flex items-center gap-2 bg-orange hover:bg-orange-dark text-white font-bold rounded-xl px-8 py-4 text-lg transition-colors cta-glow">
         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-        今すぐ無料電話
+        今すぐ電話で相談
       </a>
       <a href="https://lin.ee/j4wK9IM" target="_blank" rel="noopener noreferrer"
          class="flex items-center gap-2 bg-line hover:opacity-90 text-white font-bold rounded-xl px-8 py-4 text-lg transition-opacity cta-glow-line">
