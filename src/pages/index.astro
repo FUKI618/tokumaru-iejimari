@@ -1,35 +1,778 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Hero from "../components/Hero.astro";
-import Problem from "../components/Problem.astro";
-import Definition from "../components/Definition.astro";
-import Timing from "../components/Timing.astro";
-import Process from "../components/Process.astro";
-import Costs from "../components/Costs.astro";
-import Service from "../components/Service.astro";
-import FAQ from "../components/FAQ.astro";
-import CTASection from "../components/CTASection.astro";
-import FloatingCTA from "../components/FloatingCTA.astro";
-import Footer from "../components/Footer.astro";
+
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : import.meta.env.BASE_URL + "/";
+const asset = (p: string) => `${base}${p.replace(/^\/+/, "")}`;
+
+const logo      = asset("logo.svg");
+const hero      = asset("images/gomi/hero.webp");
+const before1   = asset("images/gomi/before1.webp");
+const after1    = asset("images/gomi/after1.webp");
+const svcClean  = asset("images/gomi/service-cleanup.webp");
+const svcCleaning = asset("images/gomi/service-cleaning.webp");
+const svcPest   = asset("images/gomi/service-pest.webp");
+const svcHaul   = asset("images/gomi/service-hauling.webp");
+const bgWorry   = asset("images/gomi/bg-worry.webp");
+const staffF    = asset("images/gomi/staff-female.webp");
+const bgArea    = asset("images/gomi/bg-area.webp");
+const bgConsult = asset("images/gomi/bg-consultation.webp");
 ---
 
 <Layout
-  title="名古屋の家じまい・実家じまい相談窓口｜徳丸商会｜片付け・遺品整理・不用品買取"
-  description="名古屋市・近郊エリアの家じまい・実家じまいなら徳丸商会。片付け・遺品整理・不用品買取から売却相談まで、ワンストップでサポート。出張費無料・その場で現金払い。まずは無料相談を。"
+  title="名古屋のゴミ屋敷清掃・片付けなら徳丸商会｜24時間対応"
+  description="名古屋市・近郊のゴミ屋敷清掃・汚部屋片付けなら徳丸商会。24時間対応・追加料金なし・女性スタッフ在籍。害虫駆除・ハウスクリーニングまで一括対応。052-990-3968"
 >
-  <Header />
-  <main>
-    <Hero />
-    <Problem />
-    <Definition />
-    <Timing />
-    <Process />
-    <Costs />
-    <Service />
-    <FAQ />
-    <CTASection />
-  </main>
-  <Footer />
-  <FloatingCTA />
+
+<!-- ===========================
+     1. HEADER (fixed)
+     =========================== -->
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border" style="height:60px;">
+  <div class="max-w-6xl mx-auto px-3 h-full flex items-center justify-between gap-2">
+    <!-- Logo + Name -->
+    <a href="/" class="flex items-center gap-2 shrink-0" aria-label="徳丸商会 トップページへ">
+      <img src={logo} alt="徳丸商会ロゴ" width="40" height="40" class="w-10 h-10 object-contain" loading="eager" />
+      <span class="hidden sm:block text-sm font-bold text-teal-dark leading-tight">徳丸商会<br /><span class="text-[10px] font-normal text-text-light">ゴミ屋敷清掃</span></span>
+    </a>
+
+    <!-- PC Nav -->
+    <nav class="hidden md:flex items-center gap-5 text-sm text-text-light">
+      <a href="#services" class="hover:text-teal transition-colors">サービス</a>
+      <a href="#price" class="hover:text-teal transition-colors">料金</a>
+      <a href="#flow" class="hover:text-teal transition-colors">流れ</a>
+      <a href="#faq" class="hover:text-teal transition-colors">FAQ</a>
+    </nav>
+
+    <!-- CTA Buttons -->
+    <div class="flex items-center gap-1.5 shrink-0">
+      <a href="tel:052-990-3968"
+         class="flex items-center gap-1 bg-teal text-white rounded-md px-2.5 py-1.5 text-[11px] font-bold leading-none hover:bg-teal-dark transition-colors">
+        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        <span class="whitespace-nowrap">無料電話</span>
+      </a>
+      <a href="https://lin.ee/j4wK9IM" target="_blank" rel="noopener noreferrer"
+         class="flex items-center gap-1 bg-line text-white rounded-md px-2.5 py-1.5 text-[11px] font-bold leading-none hover:opacity-90 transition-opacity">
+        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        <span class="whitespace-nowrap">LINE相談</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- PC Header height spacer -->
+<div class="h-[60px]"></div>
+
+
+<!-- ===========================
+     2. HERO
+     =========================== -->
+<section id="hero" class="bg-teal-dark">
+  <!-- Mobile: image top, text bottom -->
+  <div class="md:hidden">
+    <div class="w-full aspect-video overflow-hidden">
+      <img src={hero} alt="名古屋のゴミ屋敷清掃・片付けを担当する徳丸商会スタッフチーム"
+           width="800" height="450"
+           class="w-full h-full object-cover object-center"
+           loading="eager" fetchpriority="high" />
+    </div>
+    <div class="px-4 py-6 text-white">
+      <p class="text-[11px] font-bold text-orange-light mb-2 uppercase tracking-wider">名古屋No.1 ゴミ屋敷清掃</p>
+      <h1 class="text-xl font-bold leading-snug mb-3">
+        名古屋のゴミ屋敷清掃・<br />片付けなら<span class="text-orange-light">徳丸商会</span>
+      </h1>
+      <p class="text-sm text-white/80 mb-4 leading-relaxed">
+        散らかった部屋も最短即日対応。<br />女性スタッフ在籍・追加料金一切なし。
+      </p>
+      <!-- Badges -->
+      <div class="flex flex-wrap gap-1.5 mb-5">
+        {["24時間対応", "追加料金なし", "女性スタッフ在籍", "秘密厳守"].map(b => (
+          <span class="bg-white/20 text-white text-[11px] px-2 py-0.5 rounded-full border border-white/30 whitespace-nowrap">{b}</span>
+        ))}
+      </div>
+      <!-- CTA -->
+      <div class="flex gap-2">
+        <a href="tel:052-990-3968"
+           class="flex-1 flex items-center justify-center gap-1.5 bg-orange text-white font-bold rounded-lg py-3 text-sm cta-glow">
+          <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+          <span class="whitespace-nowrap">無料電話相談</span>
+        </a>
+        <a href="https://lin.ee/j4wK9IM" target="_blank" rel="noopener noreferrer"
+           class="flex-1 flex items-center justify-center gap-1.5 bg-line text-white font-bold rounded-lg py-3 text-sm cta-glow-line">
+          <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+          <span class="whitespace-nowrap">LINEで相談</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PC: bg image + right text overlay -->
+  <div class="hidden md:block relative min-h-[520px]">
+    <img src={hero} alt="名古屋のゴミ屋敷清掃・片付けを担当する徳丸商会スタッフチーム"
+         width="1200" height="675"
+         class="absolute inset-0 w-full h-full object-cover object-center"
+         loading="eager" fetchpriority="high" />
+    <div class="absolute inset-0 bg-gradient-to-r from-teal-dark/70 via-teal-dark/40 to-transparent"></div>
+    <div class="relative z-10 max-w-6xl mx-auto px-6 py-16 flex items-center min-h-[520px]">
+      <div class="max-w-xl text-white">
+        <p class="text-sm font-bold text-orange-light mb-3 uppercase tracking-widest">名古屋No.1 ゴミ屋敷清掃</p>
+        <h1 class="text-4xl font-bold leading-tight mb-4">
+          名古屋のゴミ屋敷清掃・<br />片付けなら<span class="text-orange-light">徳丸商会</span>
+        </h1>
+        <p class="text-base text-white/85 mb-6 leading-relaxed">
+          散らかった部屋も最短即日対応。<br />女性スタッフ在籍・追加料金一切なし。
+        </p>
+        <div class="flex flex-wrap gap-2 mb-7">
+          {["24時間対応", "追加料金なし", "女性スタッフ在籍", "秘密厳守"].map(b => (
+            <span class="bg-white/20 text-white text-sm px-3 py-1 rounded-full border border-white/30 whitespace-nowrap">{b}</span>
+          ))}
+        </div>
+        <div class="flex gap-3">
+          <a href="tel:052-990-3968"
+             class="flex items-center gap-2 bg-orange hover:bg-orange-dark text-white font-bold rounded-xl px-6 py-4 text-base transition-colors cta-glow">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+            今すぐ無料電話
+          </a>
+          <a href="https://lin.ee/j4wK9IM" target="_blank" rel="noopener noreferrer"
+             class="flex items-center gap-2 bg-line hover:opacity-90 text-white font-bold rounded-xl px-6 py-4 text-base transition-opacity cta-glow-line">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+            LINEで無料相談
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===========================
+     3. 信頼バー
+     =========================== -->
+<section class="bg-bg-white border-t-4 border-teal py-6 px-4">
+  <div class="max-w-4xl mx-auto">
+    <div class="grid grid-cols-3 gap-3 stagger-children">
+      {[
+        { num: "3,000", unit: "件+", label: "累計実績" },
+        { num: "98", unit: "%", label: "お客様満足度" },
+        { num: "0", unit: "円", label: "見積もり費用" },
+      ].map(item => (
+        <div class="reveal text-center">
+          <div class="text-2xl md:text-4xl font-bold text-teal leading-none">
+            <span class="count-up">{item.num}</span><span class="text-lg md:text-2xl text-orange">{item.unit}</span>
+          </div>
+          <p class="text-[11px] md:text-sm text-text-light mt-1">{item.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+<!-- ===========================
+     4. お悩みセクション
+     =========================== -->
+<section class="relative py-12 md:py-20 px-4 overflow-hidden">
+  <img src={bgWorry} alt="ゴミ屋敷片付けに悩む女性"
+       width="1200" height="675"
+       class="absolute inset-0 w-full h-full object-cover object-top"
+       loading="lazy" />
+  <div class="absolute inset-0 bg-teal-dark/80"></div>
+  <div class="relative z-10 max-w-4xl mx-auto">
+    <h2 class="text-lg md:text-3xl font-bold text-white text-center mb-8 reveal">
+      こんなお悩みありませんか？
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 stagger-children">
+      {[
+        "部屋がゴミで埋まって手がつけられない",
+        "近所に知られたくない",
+        "害虫が発生している",
+        "女性一人で業者を呼ぶのが不安",
+        "追加料金が怖い",
+        "どこに頼めばいいかわからない",
+      ].map(worry => (
+        <div class="reveal flex items-start gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4">
+          <span class="text-orange-light text-xl shrink-0 mt-0.5" aria-hidden="true">✓</span>
+          <p class="text-white text-sm md:text-base leading-relaxed">{worry}</p>
+        </div>
+      ))}
+    </div>
+    <p class="text-center text-white text-sm md:text-base mt-8 font-bold reveal">
+      そのお悩み、徳丸商会が全て解決します。
+    </p>
+  </div>
+</section>
+
+
+<!-- ===========================
+     5. 対応サービス
+     =========================== -->
+<section id="services" class="py-12 md:py-20 px-4 bg-bg">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-8 reveal">
+      <p class="text-xs font-bold text-teal uppercase tracking-widest mb-1">SERVICES</p>
+      <h2 class="text-xl md:text-3xl font-bold text-text">ゴミ屋敷清掃の対応サービス</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 stagger-children">
+      {[
+        { img: svcClean,    alt: "ゴミ屋敷片付け・不用品撤去サービス",      title: "ゴミ屋敷\n片付け",      desc: "部屋中のゴミを仕分け・撤去。どんな状態でも対応。" },
+        { img: svcCleaning, alt: "ハウスクリーニング・汚部屋清掃サービス",   title: "ハウス\nクリーニング", desc: "清掃後の室内を隅々まで清潔に。原状回復にも対応。" },
+        { img: svcPest,     alt: "ゴキブリ・ハエ害虫駆除サービス",          title: "害虫駆除",              desc: "ゴキブリ・コバエ等の害虫を専門薬剤で完全駆除。" },
+        { img: svcHaul,     alt: "不用品搬出・トラック積込みサービス",       title: "不用品搬出",            desc: "大型家具・家電も丁寧に搬出。買取で費用節約も。" },
+      ].map(svc => (
+        <div class="reveal bg-bg-white rounded-2xl overflow-hidden shadow-sm card-hover">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src={svc.img} alt={svc.alt}
+                 width="400" height="300"
+                 class="w-full h-full object-cover"
+                 loading="lazy" />
+          </div>
+          <div class="p-3 md:p-4">
+            <h3 class="text-sm md:text-base font-bold text-text mb-1 whitespace-pre-line leading-snug">{svc.title}</h3>
+            <p class="text-[11px] md:text-xs text-text-light leading-relaxed">{svc.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+<!-- ===========================
+     6. 3つの安心ポイント
+     =========================== -->
+<section class="py-12 md:py-20 px-4 bg-teal-bg">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-8 reveal">
+      <p class="text-xs font-bold text-teal uppercase tracking-widest mb-1">SAFETY</p>
+      <h2 class="text-xl md:text-3xl font-bold text-text">女性のお客様も安心の<br class="md:hidden" />3つのポイント</h2>
+    </div>
+    <div class="flex flex-col md:flex-row gap-6 items-center">
+      <div class="md:w-2/5 shrink-0 reveal">
+        <div class="aspect-[4/3] overflow-hidden rounded-2xl shadow-md">
+          <img src={staffF} alt="徳丸商会の女性スタッフ。ゴミ屋敷清掃に安心して任せられます"
+               width="400" height="300"
+               class="w-full h-full object-cover object-top"
+               loading="lazy" />
+        </div>
+      </div>
+      <div class="md:w-3/5 grid gap-4 stagger-children">
+        {[
+          { icon: "👩", title: "女性スタッフを指名OK", desc: "女性のお客様でも安心。女性スタッフが対応いたします。事前にお申し付けください。" },
+          { icon: "🧥", title: "私服作業で近隣配慮", desc: "ロゴなしの作業着・私服で伺います。近所に知られることなく作業可能です。" },
+          { icon: "🔒", title: "個人情報は10日で破棄", desc: "ご依頼時にお預かりした個人情報は作業完了後10日以内に完全消去します。" },
+        ].map(pt => (
+          <div class="reveal flex items-start gap-4 bg-bg-white rounded-xl p-4 shadow-sm">
+            <span class="text-2xl shrink-0" role="img" aria-label={pt.title}>{pt.icon}</span>
+            <div>
+              <h3 class="text-sm md:text-base font-bold text-text mb-1">{pt.title}</h3>
+              <p class="text-xs md:text-sm text-text-light leading-relaxed">{pt.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===========================
+     7. 料金表
+     =========================== -->
+<section id="price" class="py-12 md:py-20 px-4 bg-bg-white">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-8 reveal">
+      <p class="text-xs font-bold text-teal uppercase tracking-widest mb-1">PRICE</p>
+      <h2 class="text-xl md:text-3xl font-bold text-text">料金の目安</h2>
+    </div>
+    <div class="reveal overflow-x-auto rounded-2xl shadow-sm border border-border">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="bg-teal text-white">
+            <th class="px-4 py-3 text-[11px] md:text-sm font-bold whitespace-nowrap">間取り</th>
+            <th class="px-4 py-3 text-[11px] md:text-sm font-bold whitespace-nowrap">料金（税込）</th>
+            <th class="px-4 py-3 text-[11px] md:text-sm font-bold whitespace-nowrap hidden md:table-cell">目安時間</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            { room: "1R〜1K", price: "14,900円〜", time: "2〜4時間" },
+            { room: "1DK〜1LDK", price: "30,000円〜", time: "4〜6時間" },
+            { room: "2LDK", price: "60,000円〜", time: "半日〜1日" },
+            { room: "3LDK", price: "105,000円〜", time: "1〜2日" },
+            { room: "4LDK以上", price: "165,000円〜", time: "2〜3日" },
+          ].map((row, i) => (
+            <tr class={i % 2 === 0 ? "bg-bg-white" : "bg-bg"}>
+              <td class="px-4 py-3 text-[11px] md:text-sm font-bold text-text whitespace-nowrap">{row.room}</td>
+              <td class="px-4 py-3 text-[11px] md:text-sm font-bold text-teal whitespace-nowrap">{row.price}</td>
+              <td class="px-4 py-3 text-[11px] md:text-sm text-text-light whitespace-nowrap hidden md:table-cell">{row.time}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-4 bg-orange/10 border border-orange/30 rounded-xl p-4 reveal">
+      <p class="text-sm md:text-base font-bold text-orange-dark text-center">
+        見積もり後の追加請求はありません
+      </p>
+      <p class="text-xs md:text-sm text-text-light text-center mt-1">
+        事前にお見積もりを提示し、ご納得いただいてから作業を開始します
+      </p>
+    </div>
+    <p class="text-[11px] text-text-lighter text-center mt-3">
+      ※ゴミの量・種類・エリアによって変動します。詳細は無料お見積もりにてご確認ください。
+    </p>
+  </div>
+</section>
+
+
+<!-- ===========================
+     8. CTA帯
+     =========================== -->
+<section class="relative py-12 md:py-16 px-4 overflow-hidden">
+  <img src={bgConsult} alt="ゴミ屋敷清掃の無料見積もり相談シーン"
+       width="1200" height="675"
+       class="absolute inset-0 w-full h-full object-cover object-center"
+       loading="lazy" />
+  <div class="absolute inset-0 bg-teal-dark/80"></div>
+  <div class="relative z-10 text-center text-white">
+    <h2 class="text-xl md:text-3xl font-bold mb-2 reveal">まずは無料見積もり</h2>
+    <p class="text-sm md:text-base text-white/80 mb-6 reveal">現地確認・お見積もり完全無料。お気軽にご相談ください。</p>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 reveal">
+      <a href="tel:052-990-3968"
+         class="w-full sm:w-auto flex items-center justify-center gap-2 bg-orange hover:bg-orange-dark text-white font-bold rounded-xl px-8 py-4 text-base transition-colors cta-glow">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        052-990-3968
+      </a>
+      <a href="https://lin.ee/j4wK9IM" target="_blank" rel="noopener noreferrer"
+         class="w-full sm:w-auto flex items-center justify-center gap-2 bg-line hover:opacity-90 text-white font-bold rounded-xl px-8 py-4 text-base transition-opacity cta-glow-line">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        LINEで無料見積もり
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===========================
+     9. ビフォーアフター
+     =========================== -->
+<section class="py-12 md:py-20 px-4 bg-bg">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-8 reveal">
+      <p class="text-xs font-bold text-teal uppercase tracking-widest mb-1">BEFORE / AFTER</p>
+      <h2 class="text-xl md:text-3xl font-bold text-text">施工事例</h2>
+    </div>
+    <div class="flex flex-col md:flex-row gap-4 stagger-children">
+      <div class="reveal flex-1">
+        <div class="relative aspect-video overflow-hidden rounded-2xl shadow-md">
+          <img src={before1} alt="ゴミ屋敷清掃前の室内。大量のゴミが堆積した状態"
+               width="800" height="450"
+               class="w-full h-full object-cover"
+               loading="lazy" />
+          <span class="absolute top-3 left-3 bg-text text-white text-xs font-bold px-3 py-1 rounded-full">BEFORE</span>
+        </div>
+        <p class="text-center text-xs text-text-light mt-2">作業前</p>
+      </div>
+      <div class="reveal flex items-center justify-center text-3xl text-teal font-bold md:text-5xl" aria-hidden="true">
+        <span class="md:rotate-0 rotate-90">→</span>
+      </div>
+      <div class="reveal flex-1">
+        <div class="relative aspect-video overflow-hidden rounded-2xl shadow-md">
+          <img src={after1} alt="ゴミ屋敷清掃後の室内。きれいに片付いた状態"
+               width="800" height="450"
+               class="w-full h-full object-cover"
+               loading="lazy" />
+          <span class="absolute top-3 left-3 bg-teal text-white text-xs font-bold px-3 py-1 rounded-full">AFTER</span>
+        </div>
+        <p class="text-center text-xs text-text-light mt-2">作業後</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===========================
+     10. サービスの流れ
+     =========================== -->
+<section id="flow" class="py-12 md:py-20 px-4 bg-teal-bg">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-8 reveal">
+      <p class="text-xs font-bold text-teal uppercase tracking-widest mb-1">FLOW</p>
+      <h2 class="text-xl md:text-3xl font-bold text-text">ご依頼からお支払いまでの流れ</h2>
+    </div>
+    <div class="relative">
+      <!-- Vertical line for mobile -->
+      <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-teal/30 md:hidden"></div>
+      <div class="space-y-4 stagger-children">
+        {[
+          { step: "01", title: "電話・LINE相談", desc: "24時間いつでも受付。まずはお気軽にご連絡ください。" },
+          { step: "02", title: "無料見積もり", desc: "現地にお伺いして無料でお見積もり。追加費用は一切ありません。" },
+          { step: "03", title: "片付け・搬出", desc: "ゴミ・不用品を仕分けしながら丁寧に搬出します。" },
+          { step: "04", title: "仕分け・買取", desc: "価値のある物は買取り、費用の削減に充てます。" },
+          { step: "05", title: "簡易清掃", desc: "搬出後、床・壁の簡易清掃を実施。オプションで本格清掃も。" },
+          { step: "06", title: "お支払い", desc: "作業完了後にお支払い。現金・各種クレジット対応。" },
+        ].map(fl => (
+          <div class="reveal flex items-start gap-4 pl-14 md:pl-0 md:flex-row md:gap-4">
+            <div class="absolute left-0 md:static shrink-0 w-12 h-12 rounded-full bg-teal text-white flex items-center justify-center font-bold text-sm">
+              {fl.step}
+            </div>
+            <div class="bg-bg-white rounded-xl p-4 shadow-sm flex-1">
+              <h3 class="text-sm md:text-base font-bold text-text mb-1">{fl.title}</h3>
+              <p class="text-xs md:text-sm text-text-light">{fl.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===========================
+     11. 選ばれる理由
+     =========================== -->
+<section class="py-12 md:py-20 px-4 bg-bg-white">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-8 reveal">
+      <p class="text-xs font-bold text-teal uppercase tracking-widest mb-1">WHY US</p>
+      <h2 class="text-xl md:text-3xl font-bold text-text">徳丸商会が選ばれる4つの理由</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 stagger-children">
+      {[
+        { icon: "🕐", title: "24時間\n年中無休", desc: "深夜・早朝・祝日も対応。緊急時も安心です。" },
+        { icon: "💰", title: "追加料金\n一切なし", desc: "お見積もり後の追加請求ゼロを保証します。" },
+        { icon: "🛡️", title: "家財保険\n加入済み", desc: "万が一の破損も補償。安心してお任せください。" },
+        { icon: "♻️", title: "買取値引きで\n費用削減", desc: "不用品買取額を清掃費用と相殺できます。" },
+      ].map(r => (
+        <div class="reveal bg-teal-bg rounded-2xl p-4 text-center card-hover">
+          <span class="text-3xl" role="img" aria-label={r.title.replace("\n", "")}>{r.icon}</span>
+          <h3 class="text-sm md:text-base font-bold text-text mt-2 mb-1 whitespace-pre-line leading-snug">{r.title}</h3>
+          <p class="text-[11px] md:text-xs text-text-light leading-relaxed">{r.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+<!-- ===========================
+     12. お客様の声
+     =========================== -->
+<section class="py-12 md:py-20 px-4 bg-bg">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-8 reveal">
+      <p class="text-xs font-bold text-teal uppercase tracking-widest mb-1">VOICE</p>
+      <h2 class="text-xl md:text-3xl font-bold text-text">お客様の声</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 stagger-children">
+      {[
+        {
+          area: "名古屋市中区",
+          gender: "30代女性",
+          rating: 5,
+          text: "一人暮らしでゴミが溜まり、どうしようか困っていました。女性スタッフさんが来てくれて安心でした。丁寧に対応してくれてとても助かりました。",
+        },
+        {
+          area: "名古屋市守山区",
+          gender: "40代男性",
+          rating: 5,
+          text: "仕事が忙しくて片付けられず、部屋がひどい状態に。半日で見違えるほどきれいになりました。料金も事前の見積もり通りで安心できました。",
+        },
+        {
+          area: "名古屋市緑区",
+          gender: "50代女性",
+          rating: 5,
+          text: "母の家がゴミ屋敷状態になってしまい、遠方から相談しました。追加料金もなく、スタッフの方が丁寧に対応してくださり、安心して任せられました。",
+        },
+      ].map(v => (
+        <div class="reveal bg-bg-white rounded-2xl p-5 shadow-sm card-hover">
+          <div class="flex items-center gap-1 mb-3" aria-label={`評価${v.rating}点`}>
+            {Array.from({ length: v.rating }).map(() => (
+              <span class="text-orange text-base" aria-hidden="true">★</span>
+            ))}
+          </div>
+          <p class="text-sm text-text leading-relaxed mb-4">「{v.text}」</p>
+          <p class="text-xs text-text-lighter font-bold">{v.area} {v.gender}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+<!-- ===========================
+     13. 対応エリア
+     =========================== -->
+<section class="relative py-12 md:py-20 px-4 overflow-hidden">
+  <img src={bgArea} alt="名古屋市上空からの空撮。ゴミ屋敷清掃対応エリア"
+       width="1200" height="675"
+       class="absolute inset-0 w-full h-full object-cover object-center"
+       loading="lazy" />
+  <div class="absolute inset-0 bg-teal-dark/85"></div>
+  <div class="relative z-10 max-w-5xl mx-auto">
+    <div class="text-center mb-8 reveal">
+      <p class="text-xs font-bold text-teal-light uppercase tracking-widest mb-1">AREA</p>
+      <h2 class="text-xl md:text-3xl font-bold text-white">名古屋市全域・近郊に対応</h2>
+    </div>
+    <div class="mb-6 reveal">
+      <h3 class="text-sm md:text-base font-bold text-orange-light mb-3 text-center">名古屋市 全16区</h3>
+      <div class="flex flex-wrap justify-center gap-2">
+        {["千種区","東区","北区","西区","中村区","中区","昭和区","瑞穂区","熱田区","中川区","港区","南区","守山区","緑区","名東区","天白区"].map(area => (
+          <span class="bg-white/15 text-white text-[11px] px-2.5 py-1 rounded-full border border-white/25 whitespace-nowrap">{area}</span>
+        ))}
+      </div>
+    </div>
+    <div class="reveal">
+      <h3 class="text-sm md:text-base font-bold text-orange-light mb-3 text-center">近郊エリア</h3>
+      <div class="flex flex-wrap justify-center gap-2">
+        {["あま市","清須市","北名古屋市","津島市","愛西市","弥富市","東海市","大府市","刈谷市","豊明市","四日市市"].map(area => (
+          <span class="bg-white/15 text-white text-[11px] px-2.5 py-1 rounded-full border border-white/25 whitespace-nowrap">{area}</span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===========================
+     14. FAQ
+     =========================== -->
+<section id="faq" class="py-12 md:py-20 px-4 bg-bg">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-8 reveal">
+      <p class="text-xs font-bold text-teal uppercase tracking-widest mb-1">FAQ</p>
+      <h2 class="text-xl md:text-3xl font-bold text-text">よくあるご質問</h2>
+    </div>
+    <div class="space-y-3 stagger-children" x-data>
+      {[
+        {
+          q: "ゴキブリやコバエがいて汚いですが対応できますか？",
+          a: "はい、対応しております。害虫が発生している状態のゴミ屋敷も経験豊富なスタッフが対応します。害虫駆除もセットでご依頼いただくことで、清掃と同時に対処可能です。",
+        },
+        {
+          q: "近所に知られずに作業できますか？",
+          a: "可能です。ロゴのない私服・作業着での対応、早朝や夜間作業のご相談にも応じます。プライバシーへの配慮を徹底しております。",
+        },
+        {
+          q: "女性スタッフを指名できますか？",
+          a: "はい、承っております。ご予約時にお申し付けいただければ、女性スタッフが対応いたします。お一人暮らしの女性のお客様も安心してご依頼ください。",
+        },
+        {
+          q: "見積もり後に追加料金は発生しますか？",
+          a: "一切発生しません。事前にお見積もりを提示し、ご了承いただいてから作業を開始します。隠れた費用は一切ございません。",
+        },
+        {
+          q: "作業時間はどのくらいですか？",
+          a: "間取りやゴミの量によって異なります。1R〜1Kで2〜4時間、1LDKで4〜6時間、2LDKで半日〜1日が目安です。詳細はお見積もり時にご説明します。",
+        },
+        {
+          q: "不用品の買取もしてもらえますか？",
+          a: "はい、古物商許可（第541042309800号）を取得しており、家具・家電・骨董品・貴金属などを適正価格で買取いたします。買取額を清掃費用と相殺することでお得にご利用いただけます。",
+        },
+        {
+          q: "賃貸物件の原状回復にも対応できますか？",
+          a: "対応しております。ゴミの撤去からハウスクリーニングまで、退去時の原状回復をトータルでサポートします。",
+        },
+        {
+          q: "支払い方法は？",
+          a: "現金のほか、各種クレジットカード・銀行振込に対応しております。作業完了後のお支払いですのでご安心ください。",
+        },
+      ].map((faq, i) => (
+        <div class="reveal bg-bg-white rounded-xl overflow-hidden shadow-sm border border-border"
+             x-data="{ open: false }">
+          <button
+            class="w-full flex items-center justify-between gap-3 px-5 py-4 text-left"
+            x-on:click="open = !open"
+            :aria-expanded="open"
+            aria-controls={`faq-answer-${i}`}>
+            <span class="flex items-center gap-3">
+              <span class="text-teal font-bold text-sm shrink-0">Q</span>
+              <span class="text-sm md:text-base font-bold text-text">{faq.q}</span>
+            </span>
+            <svg class="w-5 h-5 text-teal shrink-0 transition-transform duration-300"
+                 :class="open ? 'rotate-180' : ''"
+                 fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div id={`faq-answer-${i}`} x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2">
+            <div class="px-5 pb-4 flex items-start gap-3">
+              <span class="text-orange font-bold text-sm shrink-0">A</span>
+              <p class="text-sm text-text-light leading-relaxed">{faq.a}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+<!-- ===========================
+     15. 最終CTA
+     =========================== -->
+<section class="relative py-14 md:py-24 px-4 overflow-hidden">
+  <img src={bgConsult} alt="ゴミ屋敷清掃の最終相談・見積もり依頼シーン"
+       width="1200" height="675"
+       class="absolute inset-0 w-full h-full object-cover object-center"
+       loading="lazy" />
+  <div class="absolute inset-0 bg-teal-dark/85"></div>
+  <div class="relative z-10 text-center max-w-2xl mx-auto">
+    <h2 class="text-xl md:text-3xl font-bold text-white mb-3 reveal">
+      今すぐゴミ屋敷を解決しませんか？
+    </h2>
+    <p class="text-sm md:text-base text-white/80 mb-2 reveal">24時間・年中無休で受付中</p>
+    <p class="text-xl md:text-3xl font-bold text-orange-light mb-6 reveal">052-990-3968</p>
+
+    <!-- Mobile -->
+    <div class="flex flex-col gap-3 md:hidden reveal">
+      <a href="tel:052-990-3968"
+         class="flex items-center justify-center gap-2 bg-orange text-white font-bold rounded-xl py-4 text-base cta-glow">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        無料電話相談 052-990-3968
+      </a>
+      <a href="https://lin.ee/j4wK9IM" target="_blank" rel="noopener noreferrer"
+         class="flex items-center justify-center gap-2 bg-line text-white font-bold rounded-xl py-4 text-base cta-glow-line">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        LINEで無料相談・見積もり
+      </a>
+    </div>
+
+    <!-- PC -->
+    <div class="hidden md:flex items-center justify-center gap-4 reveal">
+      <a href="tel:052-990-3968"
+         class="flex items-center gap-2 bg-orange hover:bg-orange-dark text-white font-bold rounded-xl px-8 py-4 text-lg transition-colors cta-glow">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        今すぐ無料電話
+      </a>
+      <a href="https://lin.ee/j4wK9IM" target="_blank" rel="noopener noreferrer"
+         class="flex items-center gap-2 bg-line hover:opacity-90 text-white font-bold rounded-xl px-8 py-4 text-lg transition-opacity cta-glow-line">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        LINEで無料見積もり
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===========================
+     16. フッター
+     =========================== -->
+<footer class="bg-teal-dark text-white py-10 px-4">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex flex-col md:flex-row gap-8 md:gap-12 mb-8">
+      <div class="shrink-0">
+        <div class="flex items-center gap-3 mb-3">
+          <img src={logo} alt="徳丸商会ロゴ" width="48" height="48" class="w-12 h-12 object-contain bg-white rounded-lg p-1" loading="lazy" />
+          <div>
+            <p class="font-bold text-base">徳丸商会</p>
+            <p class="text-xs text-white/70">ゴミ屋敷清掃専門</p>
+          </div>
+        </div>
+        <p class="text-sm text-white/80 mb-1">TEL: <a href="tel:052-990-3968" class="hover:text-orange-light transition-colors">052-990-3968</a></p>
+        <p class="text-sm text-white/80 mb-1">受付: 24時間・年中無休</p>
+        <p class="text-xs text-white/60">古物商許可 第541042309800号</p>
+      </div>
+      <div class="flex-1 grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+        <div>
+          <p class="font-bold text-orange-light mb-2 text-xs uppercase tracking-widest">サービス</p>
+          <ul class="space-y-1 text-white/75">
+            <li>ゴミ屋敷片付け</li>
+            <li>ハウスクリーニング</li>
+            <li>害虫駆除</li>
+            <li>不用品搬出・買取</li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-bold text-orange-light mb-2 text-xs uppercase tracking-widest">対応エリア</p>
+          <ul class="space-y-1 text-white/75">
+            <li>名古屋市全16区</li>
+            <li>あま市・清須市</li>
+            <li>北名古屋市・津島市</li>
+            <li>その他近郊</li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-bold text-orange-light mb-2 text-xs uppercase tracking-widest">リンク</p>
+          <ul class="space-y-1 text-white/75">
+            <li><a href="#faq" class="hover:text-white transition-colors">よくある質問</a></li>
+            <li><a href="/privacy-policy" class="hover:text-white transition-colors">プライバシーポリシー</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-white/20 pt-6 text-center">
+      <p class="text-xs text-white/50">&copy; 2025 徳丸商会. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ===========================
+     17. フローティングCTA (モバイルのみ)
+     =========================== -->
+<div class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-bg-white border-t border-border shadow-xl">
+  <!-- Marquee -->
+  <div class="floating-marquee bg-teal py-1">
+    <div class="floating-marquee-inner text-white text-[11px] font-bold">
+      <span class="mx-4">24時間受付中</span>
+      <span class="mx-4">・</span>
+      <span class="mx-4">追加料金一切なし</span>
+      <span class="mx-4">・</span>
+      <span class="mx-4">女性スタッフ在籍</span>
+      <span class="mx-4">・</span>
+      <span class="mx-4">秘密厳守</span>
+      <span class="mx-4">・</span>
+      <span class="mx-4">24時間受付中</span>
+      <span class="mx-4">・</span>
+      <span class="mx-4">追加料金一切なし</span>
+      <span class="mx-4">・</span>
+      <span class="mx-4">女性スタッフ在籍</span>
+      <span class="mx-4">・</span>
+      <span class="mx-4">秘密厳守</span>
+      <span class="mx-4">・</span>
+    </div>
+  </div>
+  <!-- Buttons -->
+  <div class="flex">
+    <a href="tel:052-990-3968"
+       class="flex-1 flex flex-col items-center justify-center gap-0.5 bg-orange text-white font-bold py-3">
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+      <span class="text-[11px] leading-tight">電話で相談</span>
+      <span class="text-[10px] leading-tight opacity-90">052-990-3968</span>
+    </a>
+    <a href="https://lin.ee/j4wK9IM" target="_blank" rel="noopener noreferrer"
+       class="flex-1 flex flex-col items-center justify-center gap-0.5 bg-line text-white font-bold py-3">
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      <span class="text-[11px] leading-tight">LINEで相談</span>
+      <span class="text-[10px] leading-tight opacity-90">24時間受付中</span>
+    </a>
+  </div>
+</div>
+
+<!-- モバイルフローティングCTAの分の下余白 -->
+<div class="md:hidden h-[88px]"></div>
+
+
+<!-- ===========================
+     18. スクロールRevealスクリプト
+     =========================== -->
+<script is:inline>
+(function () {
+  var targets = document.querySelectorAll('.reveal, .count-up');
+  if (!targets.length) return;
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  targets.forEach(function (el) { io.observe(el); });
+})();
+</script>
+
 </Layout>
