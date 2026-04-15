@@ -84,44 +84,56 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
      =========================== -->
 <section id="hero" class="bg-teal-dark">
   <!-- Mobile: image top, text bottom -->
-  <div class="md:hidden">
-    <div class="w-full aspect-video overflow-hidden">
-      <img src={hero} alt="名古屋のゴミ屋敷清掃・片付けを担当する徳丸商会スタッフチーム"
-           width="800" height="450"
-           class="w-full h-full object-cover object-top"
-           loading="eager" fetchpriority="high" />
-    </div>
-    <div class="px-4 py-6 text-white">
-      <p class="text-[11px] font-bold text-orange-light mb-2 uppercase tracking-wider">名古屋No.1 ゴミ屋敷清掃</p>
-      <h1 class="text-[1.6rem] font-black leading-[1.2] mb-3" style="text-shadow: 0 1px 6px rgba(0,0,0,0.3);">
-        名古屋のゴミ屋敷清掃・<br />片付けなら<span class="text-orange-light">徳丸商会</span>
-      </h1>
-      <p class="text-sm text-white/80 mb-4 leading-relaxed">
-        散らかった部屋も最短即日対応。<br />経験豊富なスタッフ・追加料金一切なし。
-      </p>
-      <!-- Badges -->
-      <div class="flex flex-wrap gap-1.5 mb-5">
-        {["24時間対応", "追加料金なし", "経験豊富なスタッフ", "秘密厳守"].map(b => (
-          <span class="bg-orange/20 text-orange-light text-[11px] font-bold px-3 py-1 rounded-full border border-orange/30 whitespace-nowrap shadow-sm">{b}</span>
-        ))}
+  <!-- Mobile: full-bleed hero -->
+  <div class="md:hidden relative min-h-[520px] overflow-hidden">
+    <img src={hero} alt="徳丸商会スタッフ" width="800" height="520"
+         class="absolute inset-0 w-full h-full object-cover object-top"
+         loading="eager" fetchpriority="high" />
+    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70"></div>
+
+    <div class="relative z-10 flex flex-col justify-between min-h-[520px] px-4 py-5">
+      <!-- Top -->
+      <div>
+        <p class="text-[10px] font-bold text-orange-light uppercase tracking-widest mb-2">名古屋No.1 ゴミ屋敷清掃</p>
+        <h1 class="text-[1.5rem] font-black text-white leading-[1.3] mb-3" style="text-shadow: 0 2px 8px rgba(0,0,0,0.6);">
+          名古屋のゴミ屋敷清掃・<br />片付けなら<span class="text-orange-light">徳丸商会</span>
+        </h1>
       </div>
-      <!-- 価格訴求 -->
-      <div class="mb-4">
-        <p class="text-xs text-white/70 mb-0.5">ゴミ屋敷の片付け価格に自信あり！</p>
-        <p class="text-base font-black text-white leading-tight">他社より1円でも高い時にはご相談ください</p>
+
+      <!-- Middle: badges + medal -->
+      <div class="flex items-start justify-between gap-3 my-2">
+        <div class="flex flex-col gap-1.5">
+          {["24時間対応", "追加料金なし", "経験豊富なスタッフ", "秘密厳守"].map(b => (
+            <span class="bg-white/95 text-teal-dark text-[11px] font-black px-3 py-1.5 rounded shadow-md border-l-4 border-orange whitespace-nowrap">{b}</span>
+          ))}
+        </div>
+        <div class="shrink-0 w-[110px] h-[110px] rounded-full bg-gradient-to-b from-yellow-300 via-yellow-400 to-yellow-600 flex flex-col items-center justify-center shadow-xl border-4 border-yellow-200/80" style="text-shadow: 0 1px 2px rgba(0,0,0,0.2);">
+          <span class="text-[8px] text-yellow-900 font-bold">★★★</span>
+          <span class="text-2xl font-black text-yellow-900 leading-none">30,000</span>
+          <span class="text-[9px] font-bold text-yellow-800">件以上の実績</span>
+          <span class="text-[8px] text-yellow-700 mt-0.5">お掃除・お片付け</span>
+        </div>
       </div>
-      <!-- CTA -->
-      <div class="flex gap-2">
-        <a href="tel:052-990-3968"
-           class="flex-1 flex items-center justify-center gap-1.5 bg-orange text-white font-bold rounded-lg py-3 text-sm cta-glow">
-          <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-          <span class="whitespace-nowrap">電話で相談</span>
-        </a>
-        <a href="https://lin.ee/j4wK9IM" target="_blank" rel="noopener noreferrer"
-           class="flex-1 flex items-center justify-center gap-1.5 bg-line text-white font-bold rounded-lg py-3 text-sm cta-glow-line">
-          <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-          <span class="whitespace-nowrap">LINEで相談</span>
-        </a>
+
+      <!-- Bottom: price + CTA -->
+      <div>
+        <div class="bg-white/95 rounded-xl px-4 py-3 mb-3 shadow-lg text-center">
+          <p class="text-[11px] font-bold text-teal-dark mb-0.5">汚部屋・ゴミ屋敷清掃</p>
+          <p class="text-3xl font-black text-orange leading-none">14,900<span class="text-base">円〜</span><span class="text-[10px] text-text-light font-bold ml-1">（税込）</span></p>
+          <p class="text-[10px] text-teal font-bold mt-1">他社より1円でも高い時にはご相談ください</p>
+        </div>
+        <div class="flex gap-2">
+          <a href="tel:052-990-3968"
+             class="flex-1 flex items-center justify-center gap-1.5 bg-orange text-white font-bold rounded-lg py-3 text-sm cta-glow">
+            <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+            <span class="whitespace-nowrap">電話で相談</span>
+          </a>
+          <a href="https://lin.ee/j4wK9IM" target="_blank" rel="noopener noreferrer"
+             class="flex-1 flex items-center justify-center gap-1.5 bg-line text-white font-bold rounded-lg py-3 text-sm cta-glow-line">
+            <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+            <span class="whitespace-nowrap">LINEで相談</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
