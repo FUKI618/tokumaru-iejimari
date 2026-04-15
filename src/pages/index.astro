@@ -284,31 +284,20 @@ const bgConsult = asset("images/gomi/bg-consultation.webp");
       <p class="text-xs font-bold text-teal uppercase tracking-widest mb-1">PRICE</p>
       <h2 class="text-xl md:text-3xl font-bold text-text">料金の目安</h2>
     </div>
-    <div class="reveal overflow-x-auto rounded-2xl shadow-sm border border-border">
-      <table class="w-full text-left border-collapse">
-        <thead>
-          <tr class="bg-teal text-white">
-            <th class="px-4 py-3 text-[11px] md:text-sm font-bold whitespace-nowrap">間取り</th>
-            <th class="px-4 py-3 text-[11px] md:text-sm font-bold whitespace-nowrap">料金（税込）</th>
-            <th class="px-4 py-3 text-[11px] md:text-sm font-bold whitespace-nowrap hidden md:table-cell">目安時間</th>
-          </tr>
-        </thead>
-        <tbody>
-          {[
-            { room: "1R〜1K", price: "14,900円〜", time: "2〜4時間" },
-            { room: "1DK〜1LDK", price: "30,000円〜", time: "4〜6時間" },
-            { room: "2LDK", price: "60,000円〜", time: "半日〜1日" },
-            { room: "3LDK", price: "105,000円〜", time: "1〜2日" },
-            { room: "4LDK以上", price: "165,000円〜", time: "2〜3日" },
-          ].map((row, i) => (
-            <tr class={i % 2 === 0 ? "bg-bg-white" : "bg-bg"}>
-              <td class="px-4 py-3 text-[11px] md:text-sm font-bold text-text whitespace-nowrap">{row.room}</td>
-              <td class="px-4 py-3 text-[11px] md:text-sm font-bold text-teal whitespace-nowrap">{row.price}</td>
-              <td class="px-4 py-3 text-[11px] md:text-sm text-text-light whitespace-nowrap hidden md:table-cell">{row.time}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div class="reveal space-y-3">
+      {[
+        { room: "1R〜1K", price: "1.5万〜3万円", note: "少量のゴミなら最短2時間で完了" },
+        { room: "1DK〜1LDK", price: "3万〜6万円", note: "一人暮らしの汚部屋に多いケース" },
+        { room: "2LDK", price: "6万〜10万円", note: "家族世帯で半日〜1日の作業目安" },
+        { room: "3LDK", price: "10万〜17万円", note: "大量のゴミでも1〜2日で対応可能" },
+        { room: "4LDK以上", price: "17万円〜", note: "戸建て丸ごとなど。買取値引きで大幅削減も" },
+      ].map(row => (
+        <div class="reveal bg-white rounded-xl border border-border p-4 md:p-5 flex flex-col md:flex-row md:items-center gap-2 md:gap-6 card-hover">
+          <p class="text-text font-black text-sm md:text-base md:w-40 whitespace-nowrap">{row.room}</p>
+          <p class="text-orange font-black text-lg md:text-xl whitespace-nowrap">{row.price}</p>
+          <p class="text-text-light text-xs md:text-sm">{row.note}</p>
+        </div>
+      ))}
     </div>
     <div class="mt-4 bg-orange/10 border border-orange/30 rounded-xl p-4 reveal">
       <p class="text-sm md:text-base font-bold text-orange-dark text-center">
