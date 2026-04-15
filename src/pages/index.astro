@@ -4,7 +4,7 @@ import Layout from "../layouts/Layout.astro";
 const base = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : import.meta.env.BASE_URL + "/";
-const v = "v3";
+const v = "v4";
 const asset = (p: string) => `${base}${p.replace(/^\/+/, "")}?${v}`;
 
 const logo      = asset("logo.svg");
@@ -132,24 +132,24 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
          width="1200" height="675"
          class="absolute inset-0 w-full h-full object-cover object-top"
          loading="eager" fetchpriority="high" />
-    <div class="absolute inset-0 bg-gradient-to-r from-teal-dark/70 via-teal-dark/40 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-teal-dark/85 via-teal-dark/65 to-teal-dark/20"></div>
     <div class="relative z-10 max-w-6xl mx-auto px-6 py-16 flex items-center min-h-[520px]">
       <div class="max-w-xl text-white">
         <p class="text-sm font-bold text-orange-light mb-3 uppercase tracking-widest">名古屋No.1 ゴミ屋敷清掃</p>
-        <h1 class="text-4xl font-bold leading-tight mb-4">
+        <h1 class="text-4xl font-black leading-tight mb-4" style="text-shadow: 0 2px 8px rgba(0,0,0,0.5);">
           名古屋のゴミ屋敷清掃・<br />片付けなら<span class="text-orange-light">徳丸商会</span>
         </h1>
-        <p class="text-base text-white/85 mb-6 leading-relaxed">
+        <p class="text-base text-white mb-6 leading-relaxed" style="text-shadow: 0 1px 4px rgba(0,0,0,0.4);">
           散らかった部屋も最短即日対応。<br />経験豊富なスタッフ・追加料金一切なし。
         </p>
         <div class="flex flex-wrap gap-2 mb-7">
           {["24時間対応", "追加料金なし", "経験豊富なスタッフ", "秘密厳守"].map(b => (
-            <span class="bg-white/20 text-white text-sm px-3 py-1 rounded-full border border-white/30 whitespace-nowrap">{b}</span>
+            <span class="bg-white/25 text-white text-sm font-bold px-3 py-1 rounded-full border border-white/40 whitespace-nowrap" style="text-shadow: 0 1px 3px rgba(0,0,0,0.3);">{b}</span>
           ))}
         </div>
         <!-- 価格訴求 -->
-        <div class="mb-5">
-          <p class="text-sm text-white/70 mb-1">ゴミ屋敷の片付け価格に自信あり！</p>
+        <div class="mb-5" style="text-shadow: 0 1px 4px rgba(0,0,0,0.4);">
+          <p class="text-sm text-white/90 mb-1 font-bold">ゴミ屋敷の片付け価格に自信あり！</p>
           <p class="text-xl font-black text-white leading-tight">他社より1円でも高い時にはご相談ください</p>
         </div>
         <div class="flex gap-3">
