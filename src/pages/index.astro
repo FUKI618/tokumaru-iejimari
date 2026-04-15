@@ -40,12 +40,14 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
 <!-- ===========================
      1. HEADER (fixed)
      =========================== -->
-<header id="site-header" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border" style="height:60px;">
-  <div class="max-w-6xl mx-auto px-3 h-full flex items-center justify-between gap-2">
-    <!-- Logo + Name -->
-    <a href="/" class="flex items-center gap-2 shrink-0" aria-label="徳丸商会 トップページへ">
-      <img src={logo} alt="徳丸商会ロゴ" width="40" height="40" class="w-10 h-10 object-contain" loading="eager" />
-      <span class="hidden sm:block text-sm font-bold text-teal-dark leading-tight">徳丸商会<br /><span class="text-[10px] font-normal text-text-light">ゴミ屋敷清掃</span></span>
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-teal/10" style="height:68px;">
+  <div class="max-w-6xl mx-auto px-4 h-full flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2.5 shrink-0" aria-label="徳丸商会 トップページへ">
+      <img src={logo} alt="徳丸商会ロゴ" width="48" height="48" class="w-11 h-11 md:w-14 md:h-14 object-contain" loading="eager" />
+      <div>
+        <span class="text-teal-dark font-black text-base md:text-xl leading-tight block">徳丸商会</span>
+        <span class="text-text-lighter text-[9px] md:text-xs font-bold leading-tight block">ゴミ屋敷清掃・片付け専門</span>
+      </div>
     </a>
 
     <!-- PC Nav -->
@@ -73,7 +75,7 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
 </header>
 
 <!-- PC Header height spacer -->
-<div class="h-[60px]"></div>
+<div class="h-[68px]"></div>
 
 
 <!-- ===========================
@@ -90,7 +92,7 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
     </div>
     <div class="px-4 py-6 text-white">
       <p class="text-[11px] font-bold text-orange-light mb-2 uppercase tracking-wider">名古屋No.1 ゴミ屋敷清掃</p>
-      <h1 class="text-xl font-bold leading-snug mb-3">
+      <h1 class="text-[1.6rem] font-black leading-[1.2] mb-3" style="text-shadow: 0 1px 6px rgba(0,0,0,0.3);">
         名古屋のゴミ屋敷清掃・<br />片付けなら<span class="text-orange-light">徳丸商会</span>
       </h1>
       <p class="text-sm text-white/80 mb-4 leading-relaxed">
@@ -99,7 +101,7 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
       <!-- Badges -->
       <div class="flex flex-wrap gap-1.5 mb-5">
         {["24時間対応", "追加料金なし", "経験豊富なスタッフ", "秘密厳守"].map(b => (
-          <span class="bg-white/20 text-white text-[11px] px-2 py-0.5 rounded-full border border-white/30 whitespace-nowrap">{b}</span>
+          <span class="bg-orange/20 text-orange-light text-[11px] font-bold px-3 py-1 rounded-full border border-orange/30 whitespace-nowrap shadow-sm">{b}</span>
         ))}
       </div>
       <!-- CTA -->
@@ -306,7 +308,7 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
     <div class="flex flex-col md:flex-row gap-6 items-center">
       <div class="md:w-2/5 shrink-0 reveal">
         <div class="aspect-[4/3] overflow-hidden rounded-2xl shadow-md">
-          <img src={staffF} alt="徳丸商会のスタッフ。ゴミ屋敷清掃に安心して任せられます"
+          <img src={asset("images/gomi/staff-male.webp")} alt="徳丸商会のスタッフ。ゴミ屋敷清掃に安心して任せられます"
                width="400" height="300"
                class="w-full h-full object-cover object-top"
                loading="lazy" />
