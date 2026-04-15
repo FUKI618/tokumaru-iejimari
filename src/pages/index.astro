@@ -453,20 +453,31 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
 
     <!-- 害虫駆除費用の目安 -->
     <h3 class="text-base md:text-xl font-bold text-text text-center mt-10 mb-4 reveal">害虫駆除費用の目安</h3>
-    <div class="reveal space-y-2">
-      {[
-        { type: "ゴキブリ", price: "2〜4万円", note: "1〜3LDKの場合" },
-        { type: "シロアリ", price: "15万〜30万円", note: "30坪戸建ての場合。坪単価5,000〜10,000円" },
-        { type: "ハチ",   price: "8,000〜50,000円", note: "種類・巣の大きさによる" },
-        { type: "ムカデ等", price: "3〜15万円", note: "20坪戸建ての場合" },
-        { type: "ダニ・ノミ", price: "2〜4万円", note: "1〜3LDKの場合" },
-      ].map(r => (
-        <div class="reveal bg-white rounded-xl border border-border p-4 flex flex-col md:flex-row md:items-center gap-1 md:gap-6">
-          <p class="text-text font-black text-sm md:text-base md:w-32 whitespace-nowrap">{r.type}</p>
-          <p class="text-orange font-black text-base md:text-lg whitespace-nowrap">{r.price}</p>
-          <p class="text-text-light text-xs md:text-sm">{r.note}</p>
-        </div>
-      ))}
+    <div class="reveal overflow-hidden rounded-xl border border-border shadow-sm">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="bg-teal text-white">
+            <th class="px-4 py-2.5 text-[11px] md:text-sm font-bold whitespace-nowrap">種類</th>
+            <th class="px-4 py-2.5 text-[11px] md:text-sm font-bold whitespace-nowrap">費用目安</th>
+            <th class="px-4 py-2.5 text-[11px] md:text-sm font-bold hidden md:table-cell">備考</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            { type: "ゴキブリ", price: "2〜4万円", note: "1〜3LDKの場合" },
+            { type: "シロアリ", price: "15万〜30万円", note: "30坪戸建て。坪単価5,000〜10,000円" },
+            { type: "ハチ",   price: "8,000〜50,000円", note: "種類・巣の大きさによる" },
+            { type: "ムカデ等", price: "3〜15万円", note: "20坪戸建ての場合" },
+            { type: "ダニ・ノミ", price: "2〜4万円", note: "1〜3LDKの場合" },
+          ].map((r, i) => (
+            <tr class={i % 2 === 0 ? "bg-white" : "bg-bg"}>
+              <td class="px-4 py-3 text-[11px] md:text-sm font-bold text-text whitespace-nowrap">{r.type}</td>
+              <td class="px-4 py-3 text-orange font-black text-sm md:text-base whitespace-nowrap">{r.price}</td>
+              <td class="px-4 py-3 text-[11px] md:text-sm text-text-light hidden md:table-cell">{r.note}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
     <p class="text-[11px] text-text-lighter text-center mt-3">
       ※害虫の種類・発生状況・建物規模によって変動します。現地確認後に正確なお見積もりをご提示します。
