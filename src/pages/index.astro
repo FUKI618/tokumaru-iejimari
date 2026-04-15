@@ -257,12 +257,14 @@ const bgConsult = asset("images/gomi/bg-consultation.webp");
       </div>
       <div class="md:w-3/5 grid gap-4 stagger-children">
         {[
-          { icon: "👩", title: "女性スタッフを指名OK", desc: "女性のお客様でも安心。女性スタッフが対応いたします。事前にお申し付けください。" },
-          { icon: "🧥", title: "私服作業で近隣配慮", desc: "ロゴなしの作業着・私服で伺います。近所に知られることなく作業可能です。" },
-          { icon: "🔒", title: "個人情報は10日で破棄", desc: "ご依頼時にお預かりした個人情報は作業完了後10日以内に完全消去します。" },
+          { title: "女性スタッフを指名OK", desc: "女性のお客様でも安心。女性スタッフが対応いたします。事前にお申し付けください。", iconPath: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2 M12 7a4 4 0 1 0-8 0 4 4 0 0 0 8 0 M22 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75" },
+          { title: "私服作業で近隣配慮", desc: "ロゴなしの作業着・私服で伺います。近所に知られることなく作業可能です。", iconPath: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" },
+          { title: "個人情報は10日で破棄", desc: "ご依頼時にお預かりした個人情報は作業完了後10日以内に完全消去します。", iconPath: "M9 12l2 2 4-4 M22 12A10 10 0 1 1 12 2a10 10 0 0 1 10 10z" },
         ].map(pt => (
           <div class="reveal flex items-start gap-4 bg-bg-white rounded-xl p-4 shadow-sm">
-            <span class="text-2xl shrink-0" role="img" aria-label={pt.title}>{pt.icon}</span>
+            <div class="shrink-0 w-10 h-10 bg-gradient-to-br from-teal to-teal-dark rounded-xl flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d={pt.iconPath}/></svg>
+            </div>
             <div>
               <h3 class="text-sm md:text-base font-bold text-text mb-1">{pt.title}</h3>
               <p class="text-xs md:text-sm text-text-light leading-relaxed">{pt.desc}</p>
@@ -309,6 +311,56 @@ const bgConsult = asset("images/gomi/bg-consultation.webp");
     </div>
     <p class="text-[11px] text-text-lighter text-center mt-3">
       ※ゴミの量・種類・エリアによって変動します。詳細は無料お見積もりにてご確認ください。
+    </p>
+
+    <!-- オプション料金 -->
+    <h3 class="text-base md:text-xl font-bold text-text text-center mt-10 mb-4 reveal">オプション料金</h3>
+    <div class="reveal overflow-hidden rounded-xl border border-border shadow-sm">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="bg-teal text-white">
+            <th class="px-4 py-2.5 text-[11px] md:text-sm font-bold whitespace-nowrap">作業項目</th>
+            <th class="px-4 py-2.5 text-[11px] md:text-sm font-bold">料金</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            { item: "ハウスクリーニング", price: "15,000円〜", note: "水回り・床などの清掃（1ヵ所単位）" },
+            { item: "仏壇供養", price: "33,000円〜", note: "提携の僧侶へ依頼し供養します" },
+            { item: "畳の撤去", price: "11,000円〜", note: "" },
+            { item: "エアコンの取り外し", price: "11,000円〜", note: "" },
+            { item: "リフォーム及び解体", price: "要お見積り", note: "" },
+          ].map((r, i) => (
+            <tr class={i % 2 === 0 ? "bg-white" : "bg-bg"}>
+              <td class="px-4 py-3 text-[11px] md:text-sm font-bold text-text whitespace-nowrap">{r.item}</td>
+              <td class="px-4 py-3">
+                <span class="text-orange font-black text-sm md:text-base whitespace-nowrap">{r.price}</span>
+                {r.note && <span class="block text-text-lighter text-[10px] md:text-xs mt-0.5">{r.note}</span>}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 解体費用の目安 -->
+    <h3 class="text-base md:text-xl font-bold text-text text-center mt-10 mb-4 reveal">解体費用の目安</h3>
+    <div class="reveal space-y-3">
+      {[
+        { type: "解体費用（木造・30坪）", price: "90万〜150万円", note: "木造が最も安価。坪単価3〜5万円が相場" },
+        { type: "解体費用（木造・50坪）", price: "150万〜250万円", note: "広い家屋はアスベスト調査費用が別途かかる場合あり" },
+        { type: "解体費用（鉄骨造・30坪）", price: "150万〜210万円", note: "木造より割高。坪単価5〜7万円が相場" },
+        { type: "解体費用（RC造・30坪）", price: "180万〜240万円", note: "鉄筋コンクリートは最も高額。坪単価6〜8万円" },
+      ].map(r => (
+        <div class="reveal bg-white rounded-xl border border-border p-4 md:p-5 flex flex-col md:flex-row md:items-center gap-2 md:gap-6 card-hover">
+          <p class="text-text font-black text-xs md:text-sm md:w-52 whitespace-nowrap">{r.type}</p>
+          <p class="text-orange font-black text-base md:text-lg whitespace-nowrap">{r.price}</p>
+          <p class="text-text-light text-[11px] md:text-sm">{r.note}</p>
+        </div>
+      ))}
+    </div>
+    <p class="text-[11px] text-text-lighter text-center mt-3">
+      ※解体費用は現地調査後に正確なお見積もりをご提示します。まずはお気軽にご相談ください。
     </p>
   </div>
 </section>
@@ -428,14 +480,16 @@ const bgConsult = asset("images/gomi/bg-consultation.webp");
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 stagger-children">
       {[
-        { icon: "🕐", title: "24時間\n年中無休", desc: "深夜・早朝・祝日も対応。緊急時も安心です。" },
-        { icon: "💰", title: "追加料金\n一切なし", desc: "お見積もり後の追加請求ゼロを保証します。" },
-        { icon: "🛡️", title: "家財保険\n加入済み", desc: "万が一の破損も補償。安心してお任せください。" },
-        { icon: "♻️", title: "買取値引きで\n費用削減", desc: "不用品買取額を清掃費用と相殺できます。" },
+        { title: "24時間\n年中無休", desc: "深夜・早朝・祝日も対応。緊急時も安心です。", iconPath: "M12 6v6l4 2 M22 12A10 10 0 1 1 12 2a10 10 0 0 1 10 10z" },
+        { title: "追加料金\n一切なし", desc: "お見積もり後の追加請求ゼロを保証します。", iconPath: "M12 1v22 M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" },
+        { title: "家財保険\n加入済み", desc: "万が一の破損も補償。安心してお任せください。", iconPath: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" },
+        { title: "買取値引きで\n費用削減", desc: "不用品買取額を清掃費用と相殺できます。", iconPath: "M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" },
       ].map(r => (
         <div class="reveal bg-teal-bg rounded-2xl p-4 text-center card-hover">
-          <span class="text-3xl" role="img" aria-label={r.title.replace("\n", "")}>{r.icon}</span>
-          <h3 class="text-sm md:text-base font-bold text-text mt-2 mb-1 whitespace-pre-line leading-snug">{r.title}</h3>
+          <div class="w-12 h-12 mx-auto bg-gradient-to-br from-teal to-teal-dark rounded-2xl flex items-center justify-center shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d={r.iconPath}/></svg>
+          </div>
+          <h3 class="text-sm md:text-base font-bold text-text mt-3 mb-1 whitespace-pre-line leading-snug">{r.title}</h3>
           <p class="text-[11px] md:text-xs text-text-light leading-relaxed">{r.desc}</p>
         </div>
       ))}
