@@ -160,6 +160,15 @@ body {
 }
 .badge-pulse { animation: badge-pulse 2s ease-in-out infinite; }
 
+/* ─── Before→After arrow pulse ─── */
+@keyframes ba-arrow-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 4px 12px rgba(232,148,30,0.3); }
+  50%      { transform: scale(1.15); box-shadow: 0 6px 20px rgba(232,148,30,0.5); }
+}
+.ba-arrow {
+  animation: ba-arrow-pulse 2s ease-in-out infinite;
+}
+
 /* ─── Dots pattern ─── */
 .dots-pattern {
   background-image: radial-gradient(circle, var(--color-border) 1px, transparent 1px);
