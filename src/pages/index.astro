@@ -31,6 +31,7 @@ const buyoutTires   = asset("images/gomi/buyout-tires.webp");
 const buyoutTable   = asset("images/gomi/buyout-table.webp");
 const svcPrivacy    = asset("images/gomi/service-privacy.webp");
 const bgHappy       = asset("images/gomi/bg-happy.webp");
+const staffPortrait = asset("images/gomi/staff-portrait.webp");
 ---
 
 <Layout
@@ -851,6 +852,38 @@ const bgHappy       = asset("images/gomi/bg-happy.webp");
   </div>
 </section>
 
+
+<!-- ===========================
+     13.5 作業員からのご挨拶
+     =========================== -->
+<section class="py-12 md:py-20 px-4 bg-bg-white">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-8 reveal">
+      <p class="text-xs font-bold text-teal uppercase tracking-widest mb-1">MESSAGE</p>
+      <h2 class="text-xl md:text-3xl font-bold text-text">作業員からのご挨拶</h2>
+    </div>
+    <div class="reveal bg-teal-bg border border-teal/20 rounded-2xl p-6 md:p-8 flex flex-col sm:flex-row gap-6 items-center sm:items-start">
+      <div class="shrink-0">
+        <img src={staffPortrait} alt="徳丸商会 清掃作業員" width="160" height="160" class="w-32 h-32 md:w-40 md:h-40 rounded-2xl object-cover shadow-md" loading="lazy" />
+        <p class="text-teal-dark font-bold text-sm text-center mt-3">清掃担当</p>
+      </div>
+      <div class="flex-1">
+        <p class="text-text text-sm md:text-base leading-relaxed mb-4">
+          「誰にも相談できなかった」「恥ずかしくて業者を呼べなかった」——そうおっしゃるお客様がほとんどです。でも、ご安心ください。私たちはこれまで何百件ものお部屋を見てきました。どんな状態でも驚きません。
+        </p>
+        <p class="text-text text-sm md:text-base leading-relaxed mb-4">
+          ゴミ屋敷は「だらしないから」ではなく、忙しさや体調不良、心の疲れが重なって誰にでも起こりうることです。だからこそ、私たちは一切の批判なく、ただ「きれいなお部屋を取り戻す」ことだけに集中します。
+        </p>
+        <p class="text-text text-sm md:text-base leading-relaxed mb-4">
+          近所に知られないよう私服で伺うことも、早朝・夜間の作業も対応できます。「ここまでやってくれるとは思わなかった」と言っていただけるのが、私たちの一番の励みです。
+        </p>
+        <p class="text-teal-dark font-bold text-sm">
+          一人で悩まず、まずはお電話ください。きっと力になれます。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ===========================
      14. FAQ
