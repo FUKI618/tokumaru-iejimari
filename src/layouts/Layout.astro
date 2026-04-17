@@ -9,7 +9,7 @@ import "../styles/global.css";
 const { title, description } = Astro.props;
 const canonicalUrl = Astro.url.href;
 const siteUrl = Astro.url.origin;
-const ogImage = `${siteUrl}/og-image.png`;
+const ogImage = `${siteUrl}/og-image.webp`;
 ---
 
 <!doctype html>
@@ -18,6 +18,12 @@ const ogImage = `${siteUrl}/og-image.png`;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="keywords" content="ゴミ屋敷,名古屋,ゴミ屋敷清掃,汚部屋片付け,ゴミ屋敷業者,害虫駆除,ハウスクリーニング,不用品回収,24時間対応,ゴミ屋敷費用" />
+    <meta name="theme-color" content="#1d7078" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://googleads.g.doubleclick.net https://www.google.com https://www.google-analytics.com https://www.googleadservices.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.google.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://www.google-analytics.com https://www.google.co.jp; connect-src 'self' https://www.google-analytics.com https://www.google.com https://googleads.g.doubleclick.net https://analytics.google.com https://fonts.googleapis.com https://fonts.gstatic.com https://region1.google-analytics.com; frame-src https://www.googletagmanager.com https://googleads.g.doubleclick.net" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
     <title>{title}</title>
 
     <!-- Canonical -->
@@ -32,6 +38,7 @@ const ogImage = `${siteUrl}/og-image.png`;
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="徳丸商会のゴミ屋敷清掃・汚部屋片付け。名古屋で24時間対応。" />
     <meta property="og:site_name" content="名古屋のゴミ屋敷清掃・片付け専門｜徳丸商会" />
 
     <!-- Twitter Card -->
@@ -39,14 +46,30 @@ const ogImage = `${siteUrl}/og-image.png`;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="徳丸商会のゴミ屋敷清掃・汚部屋片付け。名古屋で24時間対応。" />
 
-    <!-- Fonts -->
+    <!-- Fonts: 非同期読み込み -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <script is:inline>
+      (function(){
+        var l=document.createElement('link');l.rel='stylesheet';
+        l.href='https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap';
+        document.head.appendChild(l);
+      })();
+    </script>
+
+    <!-- Google Tag Manager: 3秒遅延 -->
+    <script is:inline>
+      window.dataLayer=window.dataLayer||[];
+      setTimeout(function(){
+        (function(w,d,s,l,i){w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+        f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-W493L98W');
+      },3000);
+    </script>
 
     <!-- JSON-LD: BreadcrumbList -->
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -57,7 +80,7 @@ const ogImage = `${siteUrl}/og-image.png`;
       ]
     })} />
 
-    <!-- JSON-LD: FAQPage (ゴミ屋敷清掃 全8問) -->
+    <!-- JSON-LD: FAQPage (ゴミ屋敷清掃 全10問) -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "FAQPage",
@@ -125,6 +148,22 @@ const ogImage = `${siteUrl}/og-image.png`;
             "@type": "Answer",
             "text": "現金のほか、各種クレジットカード・銀行振込に対応しております。作業完了後のお支払いですのでご安心ください。"
           }
+        },
+        {
+          "@type": "Question",
+          "name": "ゴミ屋敷の片付けにかかる費用はどのくらいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "間取りやゴミの量によって異なります。1Rで14,900円〜、1LDKで39,800円〜が目安です。不用品の買取額を費用から差し引くことも可能です。正確な金額は無料のお見積もりでお伝えします。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "女性スタッフに対応してもらうことは可能ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい、女性スタッフの対応も可能です。お一人暮らしの女性の方でも安心してご依頼いただけるよう配慮しております。ご予約時にお申し付けください。"
+          }
         }
       ]
     })} />
@@ -160,6 +199,14 @@ const ogImage = `${siteUrl}/og-image.png`;
         "reviewCount": "387",
         "bestRating": "5"
       },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "telephone": "052-990-3968",
+        "availableLanguage": ["ja"],
+        "areaServed": "JP"
+      },
+      "sameAs": ["https://lin.ee/j4wK9IM"],
       "areaServed": [
         { "@type": "City", "name": "名古屋市", "containedInPlace": { "@type": "State", "name": "愛知県" } },
         { "@type": "City", "name": "あま市" },
@@ -181,7 +228,11 @@ const ogImage = `${siteUrl}/og-image.png`;
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ゴミ屋敷片付け・清掃" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ハウスクリーニング" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "害虫駆除" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "不用品搬出・買取" } }
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "不用品搬出・買取" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "汚部屋片付け" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "原状回復・退去清掃" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "消臭・除菌作業" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "定期清掃サポート" } }
         ]
       }
     })} />
@@ -205,8 +256,27 @@ const ogImage = `${siteUrl}/og-image.png`;
         { "@type": "HowToStep", "position": 4, "name": "お支払い", "text": "作業完了を確認後、現金・クレジットカード・銀行振込でお支払い。追加料金は一切ありません。" }
       ]
     })} />
+
+    <!-- JSON-LD: Organization -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "徳丸商会",
+      "url": siteUrl,
+      "logo": siteUrl + "/logo.svg",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "052-990-3968",
+        "contactType": "customer support",
+        "availableLanguage": "ja",
+        "areaServed": "JP"
+      }
+    })} />
   </head>
   <body class="antialiased">
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W493L98W" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
     <slot />
 
     <!-- Alpine.js -->
