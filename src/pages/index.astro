@@ -552,14 +552,14 @@ const staffPortrait = asset("images/gomi/staff-portrait.webp");
     <p class="text-center text-sm md:text-base text-text-light mb-8 reveal">
       古物商許可（第541042309800号）を取得。家具・家電・タイヤなど幅広く買取し、その金額を清掃費用から差し引きます。
     </p>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 stagger-children">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
       {[
         { img: buyoutCabinet, alt: "食器棚の買取", label: "食器棚", price: "2,000円〜" },
         { img: buyoutWasher,  alt: "洗濯機の買取", label: "洗濯機", price: "3,000円〜" },
         { img: buyoutTires,   alt: "タイヤの買取",  label: "タイヤ", price: "6,000円〜" },
         { img: buyoutTable,   alt: "テーブルの買取", label: "テーブル", price: "4,000円〜" },
       ].map(item => (
-        <div class="reveal bg-white rounded-2xl overflow-hidden shadow-md card-hover">
+        <div class="bg-white rounded-2xl overflow-hidden shadow-md card-hover">
           <div class="aspect-square overflow-hidden">
             <img src={item.img} alt={item.alt}
                  width="300" height="300"
