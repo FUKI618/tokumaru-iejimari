@@ -221,20 +221,25 @@ const ogImage = `${siteUrl}/og-image.webp`;
         { "@type": "City", "name": "豊明市" },
         { "@type": "City", "name": "四日市市", "containedInPlace": { "@type": "State", "name": "三重県" } }
       ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "ゴミ屋敷清掃サービス",
-        "itemListElement": [
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ゴミ屋敷片付け・清掃" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ハウスクリーニング" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "害虫駆除" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "不用品搬出・買取" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "汚部屋片付け" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "原状回復・退去清掃" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "消臭・除菌作業" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "定期清掃サポート" } }
-        ]
-      }
+    })} />
+
+    <!-- JSON-LD: OfferCatalog (独立ブロック) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "OfferCatalog",
+      "name": "ゴミ屋敷清掃サービス",
+      "url": `${siteUrl}`,
+      "provider": { "@type": "LocalBusiness", "name": "徳丸商会" },
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ゴミ屋敷片付け・清掃", "description": "大量のゴミや不用品を分別・搬出し、住める状態に復旧します。1K〜一軒家まで対応。" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ハウスクリーニング", "description": "ゴミ撤去後の水回り・床・壁の清掃。原状回復レベルのクリーニングを実施。" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "害虫駆除", "description": "ゴキブリ・ハエ等の害虫を専門薬剤で駆除。清掃と同時に対応可能。" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "不用品搬出・買取", "description": "不用品の中から価値ある品を査定・買取。費用から差し引きで実質負担を軽減。" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "汚部屋片付け", "description": "ゴミ屋敷ほどではないが散らかったお部屋の片付けをサポート。短時間で対応。" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "原状回復・退去清掃", "description": "賃貸物件の退去時に必要な清掃・原状回復を代行。敷金返還をサポート。" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "消臭・除菌作業", "description": "生ゴミ臭・カビ臭などの悪臭を専門機器で除去。除菌・抗菌コーティングも対応。" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "定期清掃サポート", "description": "再発防止のための定期訪問清掃。月1回〜のプランで清潔な状態を維持。" } }
+      ]
     })} />
 
     <!-- JSON-LD: HowTo -->
